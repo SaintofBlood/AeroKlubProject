@@ -49,6 +49,7 @@ namespace AeroKlub.UI.Infrastructure
             kernel.Bind<IReservationRepository>().To<EFReservationRepository>();
             kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
             kernel.Bind<IUsersRepository>().To<EFUsersRepository>();
+            kernel.Bind<IServicesRepository>().To<EFServicesRepository>();
         }
 
     }

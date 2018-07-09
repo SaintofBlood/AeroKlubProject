@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AreoKlub.Domain.Concrate;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +13,8 @@ namespace AeroKlub.UI
     {
         protected void Application_Start()
         {
+
+            Database.SetInitializer<EFDbContext>(null);
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

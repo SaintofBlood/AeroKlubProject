@@ -15,5 +15,8 @@ namespace AreoKlub.Domain.Abstract
 
         void AddReservation(Reservation reservation);
 
+        void DeleteReservation(int ReservationID);
+
+        List<string> GetSpecificReservationForName(string name, string date, string username);
     }
 }

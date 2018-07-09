@@ -11,7 +11,12 @@ namespace AreoKlub.Domain.Entities
     public class Samolot
     {
         [Key]
+        [Display(Name = "PlaneID")]
         public int PlaneID { get; set; }
+
+        [Display(Name ="Name")]
         public string Nazwa { get; set; }
+
+        public int WylataneGodziny { get; set; }
     }
 }

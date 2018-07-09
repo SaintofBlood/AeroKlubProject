@@ -24,3 +24,55 @@ C:\ProjektyVS\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.pdb
 C:\ProjektyVS\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.SqlServer.dll
 C:\ProjektyVS\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.SqlServer.xml
 C:\ProjektyVS\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.csprojAssemblyReference.cache
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\AreoKlub.Domain.dll.config
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\AreoKlub.Domain.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\AreoKlub.Domain.pdb
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Data.Entity.Repository.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Helpers.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Mvc.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Razor.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.xml
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Helpers.xml
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Mvc.xml
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Razor.xml
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.xml
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.csprojAssemblyReference.cache
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.csproj.CopyComplete
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.dll
+C:\Users\Michał Górniak\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.pdb
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\AreoKlub.Domain.dll.config
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\AreoKlub.Domain.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\AreoKlub.Domain.pdb
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Data.Entity.Repository.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Helpers.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Mvc.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Razor.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.xml
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Helpers.xml
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Mvc.xml
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.Razor.xml
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.xml
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.csprojAssemblyReference.cache
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.csproj.CoreCompileInputs.cache
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.csproj.CopyComplete
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.dll
+C:\Users\SaintOfBlood\Desktop\AeroKlubWeb\AreoKlub.Domain\obj\Debug\AreoKlub.Domain.pdb

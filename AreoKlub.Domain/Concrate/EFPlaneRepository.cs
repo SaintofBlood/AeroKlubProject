@@ -30,16 +30,27 @@ namespace AreoKlub.Domain.Concrate
           
             context.SaveChanges();
         }
-
-        public Samolot DeletePlane(int PlaneID)
+        private int KeyId;
+        public void DeletePlane(string Name)
         {
-             Samolot dbEntry = context.Samoloty.Find(PlaneID);
+
+            
+            foreach(var samolot in context.Samoloty)
+            {
+                if(samolot.Nazwa == Name)
+                {
+                    KeyId = samolot.PlaneID;
+                }
+            }
+
+             Samolot dbEntry = context.Samoloty.Find(KeyId);
              if(dbEntry != null)
              {
                  context.Samoloty.Remove(dbEntry);
-                 context.SaveChanges();
+                
              }
-            return dbEntry;
+            context.SaveChanges();
+ 
           
         }
 

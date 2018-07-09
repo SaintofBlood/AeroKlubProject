@@ -75,14 +75,18 @@
   <ItemGroup>
     <Compile Include="Abstract\IPlaneRepository.cs" />
     <Compile Include="Abstract\IReservationRepository.cs" />
+    <Compile Include="Abstract\IServicesRepository.cs" />
     <Compile Include="Abstract\IUsersRepository.cs" />
     <Compile Include="Concrate\EFDbContext.cs" />
     <Compile Include="Concrate\EFPlaneRepository.cs" />
     <Compile Include="Concrate\EFReservationRepository.cs" />
+    <Compile Include="Concrate\EFServicesRepository.cs" />
     <Compile Include="Concrate\EFUsersRepository.cs" />
+    <Compile Include="Entities\Service.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Samolot.cs" />
+    <Compile Include="Entities\User1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,33 @@
+﻿@model AeroKlub.UI.Models.PlaneListViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>AddAccount</title>
+
+	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+	<script src="~/Scripts/bootstrap.min.js"></script>
+	<link href="~/Content/NavbarStyle.css" rel="stylesheet" />
+
+</head>
+<body>
+	<div>
+
+		@using (Html.BeginForm("AddAccountToRepository", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+		{
+			@Html.TextArea("Name")
+			@Html.TextArea("Nickname")
+			@Html.TextArea("paswd")
+			@Html.TextArea("email")
+
+			<input type="submit" value="Dodaj konto"/>
+		}
+
+	</div>
+</body>
+</html>

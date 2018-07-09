@@ -8,6 +8,7 @@ namespace AreoKlub.Domain.Concrate
         public DbSet<Samolot> Samoloty { get; set; }
         public DbSet<Reservation> Reservation { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Service> Services {get;set;}
 
 
     }

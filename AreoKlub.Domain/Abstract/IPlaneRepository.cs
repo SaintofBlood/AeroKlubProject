@@ -14,7 +14,7 @@ namespace AreoKlub.Domain.Abstract
 
         void AddPlane(Samolot samolot);
 
-        Samolot DeletePlane(int planeID);
+        void DeletePlane(string Name);
 
        
 

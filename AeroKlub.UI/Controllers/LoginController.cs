@@ -9,12 +9,13 @@ using System.Web.Mvc;
 
 namespace AeroKlub.UI.Controllers
 {
+
     public class LoginController : Controller
     {
         IUsersRepository repository;
         IAuthProvider authProvider;
 
-        public LoginController(IAuthProvider auth , IUsersRepository repo)
+        public LoginController(IAuthProvider auth, IUsersRepository repo)
         {
             authProvider = auth;
             repository = repo;
@@ -22,6 +23,7 @@ namespace AeroKlub.UI.Controllers
 
         public ViewResult Login()
         {
+
             return View();
         }
 
@@ -34,23 +36,38 @@ namespace AeroKlub.UI.Controllers
                 {
                     foreach (var user in repository.Users)
                     {
-                        if (user.Username == model.Login)
+                        if (model.Login == user.Username)
                         {
-                            if (user.Role == "Admin")
+                            if (user.Role == "Admin") {
                                 return RedirectToAction("Index", "Admin", new { Name = repository.GetSpecificName(model.Login).Name, NickName = model.Login });
-                            if (user.Role == "Mechanic")
-                                return RedirectToAction("Index", "Mechanic");
-                            if (user.Role == "User")
-                                return RedirectToAction("Index", "User" , new { Name = repository.GetSpecificName(model.Login).Name, NickName = model.Login });
+                            }
+
+                            else if (user.Role == "Mechanic") {
+                                return RedirectToAction("Index", "Mechanic", new { Name = repository.GetSpecificName(model.Login).Name, NickName = model.Login });
+                            }
+
+                            else /*(user.Role == "User")*/{
+                                return RedirectToAction("Index", "User", new { Name = repository.GetSpecificName(model.Login).Name, NickName = model.Login });
+                            }
                         }
                     }
                 }
                 ViewBag.Message = "Błędny login lub hasło!";
-            }       
+            }
+            return View();
+        }
+
+        public ViewResult AddAccount()
+        {
             return View();
         }
 
 
+        [HttpPost]
+        public ActionResult AddAccountToRepository(string Name , string NickName , string paswd , string email)
+        {
+            throw new Exception(Name + NickName + paswd + email);
+        }
 
     }
 }

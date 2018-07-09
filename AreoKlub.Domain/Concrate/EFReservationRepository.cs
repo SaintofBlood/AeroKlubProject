@@ -12,6 +12,7 @@ namespace AreoKlub.Domain.Concrate
     {
         private EFDbContext context = new EFDbContext();
         private List<string> output = new List<string>();
+        private List<string> output1 = new List<string>();
 
         public IEnumerable<Reservation> reservations
         {
@@ -28,7 +29,7 @@ namespace AreoKlub.Domain.Concrate
             {
                 if(name == reservation.PlaneName && data == reservation.Date)
                 {
-                    output.Add(reservation.From + "-" + reservation.To);
+                    output.Add("Od godziny: " + reservation.From + " , do godziny: " + reservation.To);
                 }
             }
             return output;
@@ -39,6 +40,32 @@ namespace AreoKlub.Domain.Concrate
             reservation.ReservationID = 0;
             context.Reservation.Add(reservation);
             context.SaveChanges();
+        }
+
+
+        public void DeleteReservation(int ReservationID)
+        {
+            Reservation dbEntry = context.Reservation.Find(ReservationID);
+            context.Reservation.Remove(dbEntry);
+            context.SaveChanges();
+
+        }
+
+        public List<string> GetSpecificReservationForName(string name, string date, string username)
+        {
+            foreach(var reservation in reservations)
+            {
+                if(name == reservation.PlaneName && date == reservation.Date  && username == reservation.By)
+                {
+                    output1.Add("Od godziny: " + reservation.From + " , do godziny: " + reservation.To);
+                }
+            }
+
+            if(output1.Any() == false)
+            {
+                return null;
+            }
+            return output1;
         }
 
     }

@@ -38,7 +38,7 @@ namespace AeroKlub.UI.Controllers
 
 
        [HttpPost]
-        public ActionResult AddReservation(Reservation reservation /*, string SliderTime*/ , string Nickname , string TOUS , string FROMUS)
+        public ActionResult AddReservation(Reservation reservation , string Nickname , string TOUS , string FROMUS)
         {
 
              string[] Times = TOUS.Split('.');
@@ -49,27 +49,80 @@ namespace AeroKlub.UI.Controllers
             int from;
             Int32.TryParse(Times1[0], out from);
 
-           
-            reservation.ReservationID = 0;
-            reservation.From = to;
-            reservation.To = from;
-            reservationRepository.AddReservation(reservation);
+            bool CanBeReached = true;
 
-            foreach (var user in usersRepository.Users)
+ 
+
+            foreach (var Rezerwacja in reservationRepository.reservations)
             {
-                if (user.Username == Nickname)
+                if (Rezerwacja.PlaneName == reservation.PlaneName && Rezerwacja.Date == reservation.Date)
                 {
-                    if (user.Role == "Admin")
-                        return RedirectToAction("Index", "Admin", new { Name = usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname });
-                    if (user.Role == "Mechanic")
-                        return RedirectToAction("Index", "Mechanic");
-                    if (user.Role == "User")
-                        return RedirectToAction("Index", "User", new { Name = usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname });
+                    if (to < Rezerwacja.From && from > Rezerwacja.To)
+                    {
+                        CanBeReached = false;
+                    }
+                    else if (to > Rezerwacja.From && from > Rezerwacja.To)
+                    {
+                        if (to - Rezerwacja.To < 0)
+                        {
+                            CanBeReached = false;
+                        }
+                    }
+                    else if (to >= Rezerwacja.From && from <= Rezerwacja.To)
+                    {
+                        CanBeReached = false;
+                    }
+                    else if (to < Rezerwacja.From && from < Rezerwacja.To)
+                    {
+                        if (Rezerwacja.From - from < 0)
+                        {
+                            CanBeReached = false;
+                        }
+                    }
+
+                    
                 }
             }
 
-            return View();
+            
 
+            if (CanBeReached == true)
+            {
+                reservation.ReservationID = 0;
+                reservation.From = to;
+                reservation.To = from;
+                reservationRepository.AddReservation(reservation);
+                TempData["message"] = "Poprawnie dodano rezerwacje!";
+            }
+            else
+            {
+                TempData["message"] = "Nie udało się dodać rezerwacji , z powodu braku dostępności danych godzin!";        
+            }
+            foreach (var user in usersRepository.Users)
+            {
+                if (Nickname == user.Username)
+                {
+                    if (user.Role == "Admin")
+                        return RedirectToAction("Index", "Admin", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname });
+                    if (user.Role == "Mechanic")
+                        return RedirectToAction("Index", "Mechanic");
+                    if (user.Role == "User")
+                        return RedirectToAction("Index", "User", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname });
+                }
+            }
+
+           
+            
+            return RedirectToAction("Login","Login");
+
+        }
+
+        public ActionResult DeleteReservation(int ReservationID , string Name , string Nickname)
+        {
+
+            reservationRepository.DeleteReservation(ReservationID);
+            TempData["reservationmessage"] = "Poprawnie usunięto rezerwacje!";
+            return RedirectToAction("Reservations", "Admin" , new { Name = Name , Nickname = Nickname});
         }
     }
 }

@@ -1,0 +1,26 @@
+﻿@model AreoKlub.Domain.Entities.Reservation
+
+ 
+<html>
+<head>
+
+    <title>AddPlaneSiteToRepository</title>
+</head>
+<body>
+	@using (Html.BeginForm("AddPlaneToRepository", "Plane", FormMethod.Post, new { enctype = "multipart/form-data" }))
+	{
+		 foreach (var property in ViewData.ModelMetadata.Properties)
+		{
+			Html.TextArea(property.PropertyName, null , null);
+
+		}
+
+
+		<input value="Dodaj" type="submit" />
+	}
+
+
+
+	TEST XD
+</body>
+</html>
