@@ -102,3 +102,14 @@ Po dodaniu danych , kopujemy connectionstring , i podmieniamy go , w pliku Web.c
     <add name="EFDbContext"  connectionString="Here" />
   </connectionStrings>
 
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Strona internetowa , działającego projektu : 
+
+http://aeroklub.azurewebsites.net/
+
+Aktualne konta :
+L:P
+user:user - Rola użytkownika
+mechanic:mechanic - Rola mechanica
+admin:admin - Rola administratora
