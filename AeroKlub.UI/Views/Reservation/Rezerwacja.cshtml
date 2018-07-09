@@ -1,0 +1,116 @@
+﻿@model AreoKlub.Domain.Entities.Reservation
+
+<html>
+<head>
+
+
+
+</head>
+<body>
+    <div>
+
+        @using (Html.BeginForm("AddReservation", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data", style = "position: relative;" }))
+        {
+
+
+            foreach (var property in ViewData.ModelMetadata.Properties)
+            {
+                if (property.DisplayName != "ID" && property.DisplayName != "By")
+                {
+
+                    if (property.DisplayName == "Nazwa samolotu")
+                    {
+
+                        @Html.TextArea(property.PropertyName, (string)ViewBag.Plane, new { @readonly = true, style = "display:none" })
+                    }
+                    else if (property.DisplayName == "Data")
+                    {
+
+                        @Html.TextArea(property.PropertyName, (string)ViewBag.Date, new { @readonly = true, style = "display:none" })
+
+                    }
+                    else if (property.DisplayName == "Od")
+                    {
+                        @Html.TextArea(property.PropertyName, "", new { @readonly = true, style = "display:none" })
+                        @Html.TextArea("FROMUS", "11", new { id = "##" + @ViewBag.Number, @readonly = true, style = "display:none" });
+                    }
+                    else if (property.DisplayName == "Do")
+                    {
+
+                        @Html.TextArea(property.PropertyName, "", new { @readonly = true, style = "display:none" })
+                        @Html.TextArea("TOUS", "11", new { id = "###" + @ViewBag.Number, @readonly = true, style = "display:none" });
+                    }
+
+
+                }
+
+                else if (property.DisplayName == "By")
+                {
+                    @Html.TextArea(property.PropertyName, (string)ViewBag.By, new { @readonly = true, style = "display:none" })
+
+
+                }
+                else if (property.DisplayName == "ID")
+                {
+                    @Html.TextArea(property.PropertyName, null, new { @redonly = true, style = "display:none" })
+                    @Html.TextArea("Nickname", (string)ViewBag.Nickname, new { @redonly = true, style = "display:none" })
+
+                }
+
+            }
+
+
+
+            <div id='#@ViewBag.Number' style="width:250px; margin:23px 10px 70px 10px;" />
+
+
+
+
+            <div>
+                <input type="submit" value="Rezerwuj" style="margin:7px 0px 6px 78px" />
+            </div>
+        }
+    </div>
+
+    <script language="javascript">
+        var html5Slider = document.getElementById('#@ViewBag.Number');
+
+        noUiSlider.create(html5Slider, {
+            connect: true,
+            behaviour: 'tap',
+            start: [2, 5],
+            tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
+            range: {
+                'min': [0, 1],
+                'max': [24]
+            },
+            pips: {
+                mode: 'values',
+                values: [0, 6, 12, 18, 24],
+                density: 4
+            }
+
+        });
+
+        html5Slider.noUiSlider.on('update', function (values, handle) {
+
+            var value = values[handle];
+            var input1 = document.getElementById("##@ViewBag.Number");
+            var input2 = document.getElementById("###@ViewBag.Number" );
+
+            if (handle) {
+                input1.innerHTML = value;
+                input1.value = value;
+            }
+            else {
+                input2.innerHTML = value;
+                input2.value = value;
+            }
+
+
+        });
+
+    </script>
+</body>
+
+</html>

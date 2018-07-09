@@ -1,0 +1,54 @@
+﻿@model AeroKlub.UI.Models.PlaneListViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h2 style="margin:auto">Rozkład lotów dla mechanika</h2>
+
+    <table style="margin: 10px;">
+        <tr>
+            <th>
+                Nazwa
+            </th>
+            @for (int i = 0; i <= 6; i++)
+            {
+                <th>
+                    @DateTime.Now.AddDays(i).ToShortDateString()
+                </th>
+            }
+        </tr>
+        @foreach (var Samolot in Model.Samoloty)
+        {
+            <tr>
+                <td>@Samolot.Nazwa</td>
+                @for (int i = 0; i <= 6; i++)
+                {
+                    <td>
+                        @Html.ActionLink("Rezerwuj", "Rezerwacja", "Reservation")
+
+                    </td>
+                }
+
+            </tr>
+
+        }
+    </table>
+</body>
+</html>

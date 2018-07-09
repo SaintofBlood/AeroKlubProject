@@ -1,0 +1,105 @@
+﻿@model AeroKlub.UI.Models.PlaneListViewModel
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/css/nouislider.css" rel="stylesheet" />
+<script src="~/Scripts/nouislider.js"></script>
+<link href="~/css/nouislider.min.css" rel="stylesheet" />
+<script src="~/Scripts/nouislider.min.js"></script>
+<script src="~/Scripts/wNumb.js"></script>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        padding: 10px;
+    }
+    td {
+        position: relative;
+    }
+    .noUi-tooltip {
+        display: none;
+    }
+
+    .noUi-active .noUi-tooltip {
+        display: block;
+    }
+</style>
+
+<h2 style="margin:auto">Rozkład lotów dla @Model.Name</h2>
+
+<table style="margin: 10px;">
+    <tbody>
+        <tr>
+            <th>
+                Nazwa
+            </th>
+            @for (int i = 0; i <= 6; i++)
+            {
+                <th>
+                    @DateTime.Now.AddDays(i).ToShortDateString()
+                </th>
+            }
+        </tr>
+        @{int z = 0; }
+
+        @foreach (var Samolot in Model.Samoloty)
+        {
+            z = z + 1;
+
+            <tr>
+                <td>@Samolot.Nazwa</td>
+                @for (int i = 0; i <= 6; i++)
+                {
+                    z = z + 1;
+                    <td>
+                        @Html.Action("Rezerwacja", "Reservation", new { PlaneName = Samolot.Nazwa, Date = DateTime.Now.AddDays(i).ToShortDateString(), Name = Model.Name, Number = z, By = Model.Name, NickName = Model.NickName })
+                        @Html.Action("GetReservation", new { name = Samolot.Nazwa, data = DateTime.Now.AddDays(i).ToShortDateString() })
+                    </td>
+
+                }
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+<table style="margin: 10px;">
+    <tr>
+        <th>
+            ReservationID
+        </th>
+        <th>
+            PlaneName
+        </th>
+        <th>
+            Data
+        </th>
+        <th>
+            From
+        </th>
+        <th>
+            To
+        </th>
+        <th>
+            By
+        </th>
+    </tr>
+    @foreach (var rezerwacja in Model.Reservations)
+    {
+        <tr>
+            <td>@rezerwacja.ReservationID</td>
+            <td>@rezerwacja.PlaneName</td>
+            <td> @rezerwacja.Date</td>
+            <td> @rezerwacja.From</td>
+            <td>   @rezerwacja.To</td>
+            <td>@rezerwacja.By</td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Dodaj Samolot", "AddPlane", "Plane")
+@Html.ActionLink("Usuń Samolot", "DeletePlane", "Plane")
+

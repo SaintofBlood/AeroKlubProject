@@ -1,0 +1,72 @@
+﻿@model AeroKlub.UI.Models.PlaneListViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <title>Index</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap-slider.min.js"></script>
+
+    <link href="~/css/bootstrap-slider.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <h2 style="margin:auto">Rozkład lotów dla @Model.Name</h2>
+
+    <table style="margin: 10px;">
+        <tr>
+            <th>
+                Nazwa
+            </th>
+            @for (int i = 0; i <= 6; i++)
+            {
+                <th>
+                    @DateTime.Now.AddDays(i).ToShortDateString()
+                </th>
+            }
+        </tr>
+        @{int z = 0; }
+
+        @foreach (var Samolot in Model.Samoloty)
+        {
+            z = z + 1;
+
+            <tr>
+                <td>@Samolot.Nazwa</td>
+                @for (int i = 0; i <= 6; i++)
+                {
+                    z = z + 1;
+                    <td>
+                        @Html.Action("Rezerwacja", "Reservation", new { PlaneName = Samolot.Nazwa, Date = DateTime.Now.AddDays(i).ToShortDateString(), Name = Model.Name , Number = z})
+
+                       
+
+                        @Html.Action("GetReservation", new { name = Samolot.Nazwa, data = DateTime.Now.AddDays(i).ToShortDateString() })
+                    </td>
+                   
+                }
+
+            </tr>
+
+        }
+    </table>
+    
+</body>
+</html>

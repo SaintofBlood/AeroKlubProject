@@ -1,0 +1,15 @@
+﻿@model AeroKlub.UI.Models.ReservationsListViewModel
+
+
+@if (Model.reservations.Any() == true)
+{
+    <div style="background-color:darkkhaki;text-align:center ; top: 0px; left: 0px;">
+            Zarezerwowane godziny:
+            @foreach (var reservation in Model.reservations)
+            {
+                <div>
+                    @reservation
+                </div>
+            }
+        </div>
+}
