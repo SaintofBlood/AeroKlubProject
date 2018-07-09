@@ -110,7 +110,8 @@ http://aeroklub.azurewebsites.net/
 
 Aktualne konta :
 L:P
-user:user - Rola użytkownika
-mechanic:mechanic - Rola mechanica
-admin:admin - Rola administratora
+user:user - Rola użytkownika;
+mechanic:mechanic - Rola mechanica;
+admin:admin - Rola administratora;
 
+Jeżeli dane nie wyświetlają się poprawnie , zalecam tryb "raw"
