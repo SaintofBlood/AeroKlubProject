@@ -11,7 +11,7 @@ Tworzymy ją poprzez Eksplorator serwera , lokalnie. Powinna zawierać odpowiedn
 
 O następujących kodach :
 
-Reservations
+- Reservations
 
 CREATE TABLE [dbo].[Reservations] (
     [ReservationID] INT           IDENTITY (1, 1) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE [dbo].[Reservations] (
     CONSTRAINT [PK_Reservations] PRIMARY KEY CLUSTERED ([ReservationID] ASC)
 );
 
-Samolots
+- Samolots
 
 CREATE TABLE [dbo].[Samolots] (
     [PlaneID]         INT            IDENTITY (1, 1) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE [dbo].[Samolots] (
     CONSTRAINT [PK_dbo.Samolots] PRIMARY KEY CLUSTERED ([PlaneID] ASC)
 );
 
-Services
+- Services
 
 CREATE TABLE [dbo].[Services] (
     [Id]      INT          IDENTITY (1, 1) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE [dbo].[Services] (
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
-Users
+- Users
 
 CREATE TABLE [dbo].[Users] (
     [Id]       INT           IDENTITY (1, 1) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE [dbo].[Users] (
 
 Przykładowe dane do tabel:
 
-Reservations
+- Reservations
 
 SET IDENTITY_INSERT [dbo].[Reservations] ON
 INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], [To], [By]) VALUES (3209, N'Cessna_150', N'11.07.2018', 4, 17, N'Admin_NAME')
@@ -66,7 +66,7 @@ INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], 
 INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], [To], [By]) VALUES (3215, N'Cessna_142', N'09.07.2018', 2, 18, N'Michał_Kochanowicz')
 SET IDENTITY_INSERT [dbo].[Reservations] OFF
 
-Samolots
+- Samolots
 
 SET IDENTITY_INSERT [dbo].[Samolots] ON
 INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (29, N'Cessna_150', 6652)
@@ -75,7 +75,7 @@ INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (31,
 INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (32, N'Cessna_221', 521)
 SET IDENTITY_INSERT [dbo].[Samolots] OFF
 
-Services
+- Services
 
 SET IDENTITY_INSERT [dbo].[Services] ON
 INSERT INTO [dbo].[Services] ([Id], [Samolot], [Data], [By]) VALUES (17, N'BAF1234', N'06.07.2018', N'Adam_Sachulski')
@@ -86,7 +86,7 @@ INSERT INTO [dbo].[Services] ([Id], [Samolot], [Data], [By]) VALUES (28, N'Cessn
 INSERT INTO [dbo].[Services] ([Id], [Samolot], [Data], [By]) VALUES (29, N'Cessna_221', N'12.07.2018', N'Adam_Sachulski')
 SET IDENTITY_INSERT [dbo].[Services] OFF
 
-Users
+- Users
 
 SET IDENTITY_INSERT [dbo].[Users] ON
 INSERT INTO [dbo].[Users] ([Id], [Username], [Role], [Name]) VALUES (1, N'admin', N'Admin', N'Admin_NAME')
