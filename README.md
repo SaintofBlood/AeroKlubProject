@@ -99,9 +99,7 @@ SET IDENTITY_INSERT [dbo].[Users] OFF
 
 Po dodaniu danych , kopujemy connectionstring , i podmieniamy go , w pliku Web.config , w miejscu :
 
-<connectionStrings>
     <add name="EFDbContext"  connectionString="Here" />
-  </connectionStrings>
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
