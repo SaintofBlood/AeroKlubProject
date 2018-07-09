@@ -1,5 +1,6 @@
 # AeroKlubProject
 
+Jeżeli dane nie wyświetlają się poprawnie , zalecam tryb "raw"
 
 Baza danych:
 Tworzymy ją poprzez Eksplorator serwera , lokalnie. Powinna zawierać odpowiednie tabele:
@@ -114,4 +115,3 @@ user:user - Rola użytkownika;
 mechanic:mechanic - Rola mechanica;
 admin:admin - Rola administratora;
 
-Jeżeli dane nie wyświetlają się poprawnie , zalecam tryb "raw"
