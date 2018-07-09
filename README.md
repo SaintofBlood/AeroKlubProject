@@ -113,3 +113,4 @@ L:P
 user:user - Rola użytkownika
 mechanic:mechanic - Rola mechanica
 admin:admin - Rola administratora
+
