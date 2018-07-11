@@ -292,14 +292,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Reservation\Rezerwacja.cshtml" />
-    <Content Include="Views\Plane\AddPlane.cshtml" />
-    <Content Include="Views\Plane\DeletePlane.cshtml" />
     <Content Include="Views\Admin\GetReservation.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Mechanic\Index.cshtml" />
     <Content Include="Views\User\GetReservation.cshtml" />
-    <Content Include="Views\Plane\AddPlaneSiteToRepository.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -322,6 +319,7 @@
     <Content Include="Views\Admin\DeleteService.cshtml" />
     <Content Include="Views\Mechanic\PlaneList.cshtml" />
     <Content Include="Views\Login\AddAccount.cshtml" />
+    <Content Include="Views\Login\Test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

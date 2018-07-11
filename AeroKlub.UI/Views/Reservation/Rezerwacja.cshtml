@@ -69,6 +69,8 @@
 
 			</div>
 
+			@Html.TextArea("All" , (string)ViewBag.All , new { @redonly = true, style = "display:none" })
+
 			<input type="submit" value="Rezerwuj" class="btn btn-success btn-block text-center" />
 
 		}
@@ -80,7 +82,7 @@
         noUiSlider.create(html5Slider, {
             connect: true,
             behaviour: 'tap',
-            start: [2, 5],
+            start: [0, 0],
             tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })],
             range: {
                 'min': [0, 1],
@@ -90,7 +92,45 @@
                 mode: 'values',
                 values: [0, 6, 12, 18, 24],
                 density: 4
-            }
+			},
+			cssPrefix: 'noUi-',
+			cssClasses: {
+
+				target: 'target',
+				base: '@String.Format("CustomStyle" + @ViewBag.Number)',
+				origin: 'origin',
+				handle: 'handle',
+				handleLower: 'handle-lower',
+				handleUpper: 'handle-upper',
+				horizontal: 'horizontal',
+				vertical: 'vertical',
+				background: 'background',
+				connect: 'connect',
+				connects: 'connects',
+				ltr: 'ltr',
+				rtl: 'rtl',
+				draggable: 'draggable',
+				drag: 'state-drag',
+				tap: 'state-tap',
+				active: 'active',
+				tooltip: 'tooltip',
+				pips: 'pips',
+				pipsHorizontal: 'pips-horizontal',
+				pipsVertical: 'pips-vertical',
+				marker: 'marker',
+				markerHorizontal: 'marker-horizontal',
+				markerVertical: 'marker-vertical',
+				markerNormal: 'marker-normal',
+				markerLarge: 'marker-large',
+				markerSub: 'marker-sub',
+				value: 'value',
+				valueHorizontal: 'value-horizontal',
+				valueVertical: 'value-vertical',
+				valueNormal: 'value-normal',
+				valueLarge: 'value-large',
+				valueSub: 'value-sub'
+
+			}
 
         });
 
@@ -110,9 +150,40 @@
             }
 
 
-        });
+	});
 
 	</script>
+
+
+
+	<style>
+
+
+		.noUi-handle {
+			border: 2px solid #5b775b;
+			border-radius:10px;
+			background: #ffffff00;
+			cursor:default;
+
+		}
+
+		.noUi-connect{
+
+		background:#28a7458a;
+		}
+
+	@String.Format(".noUi-CustomStyle" + @ViewBag.Number)
+		{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 1;
+	border-radius:3px;
+	@String.Format(@ViewBag.StringCreator)
+		}
+	</style>
+
+
 </body>
 
 </html>

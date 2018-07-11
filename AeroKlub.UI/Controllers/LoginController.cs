@@ -15,6 +15,11 @@ namespace AeroKlub.UI.Controllers
         IUsersRepository repository;
         IAuthProvider authProvider;
 
+        public ViewResult Test()
+        {
+            return View();
+        }
+
         public LoginController(IAuthProvider auth, IUsersRepository repo)
         {
             authProvider = auth;
@@ -39,7 +44,7 @@ namespace AeroKlub.UI.Controllers
                         if (model.Login == user.Username)
                         {
                             if (user.Role == "Admin") {
-                                return RedirectToAction("Index", "Admin", new { Name = repository.GetSpecificName(model.Login).Name, NickName = model.Login });
+                                return RedirectToAction("Index", "Admin", new { Name = repository.GetSpecificName(model.Login).Name, NickName = model.Login, All = false });
                             }
 
                             else if (user.Role == "Mechanic") {
@@ -47,7 +52,7 @@ namespace AeroKlub.UI.Controllers
                             }
 
                             else /*(user.Role == "User")*/{
-                                return RedirectToAction("Index", "User", new { Name = repository.GetSpecificName(model.Login).Name, NickName = model.Login });
+                                return RedirectToAction("Index", "User", new { Name = repository.GetSpecificName(model.Login).Name, NickName = model.Login , All = false});
                             }
                         }
                     }

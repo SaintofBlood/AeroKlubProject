@@ -27,36 +27,91 @@ namespace AeroKlub.UI.Controllers
             this.userRepository = repository1;
         }
 
-        public ActionResult Index(string Name, string NickName)
+        public ActionResult Index(string Name, string NickName, string PlaneName, bool? All)
         {
+
+
+            List<string> output = new List<string>();
+            foreach (var samolot in repository.Samoloty)
+            {
+                output.Add(samolot.Nazwa);
+            }
+            SelectList Lista = new SelectList(output);
+
+            if (String.IsNullOrWhiteSpace(PlaneName) == true && All == true)
+            {
+
+                PlaneListViewModel viewModel1 = new PlaneListViewModel
+                {
+                    Samoloty = repository.Samoloty,
+                    Reservations = null,
+                    Name = Name,
+                    NickName = NickName,
+                    Serwis = servicesRepository.Services,
+                    ListaSamolotów = Lista,
+                    PlaneName = null
+                };
+
+                return View(viewModel1);
+            }
+            else if (String.IsNullOrWhiteSpace(PlaneName) == false)
+            {
+
+
+                foreach (var samolot in repository.Samoloty)
+                {
+                    if (samolot.Nazwa == PlaneName)
+                    {
+                        PlaneListViewModel Model = new PlaneListViewModel
+                        {
+                            PlaneName = samolot.Nazwa,
+                            Reservations = null,
+                            Name = Name,
+                            NickName = NickName,
+                            Serwis = servicesRepository.Services,
+                            ListaSamolotów = Lista
+                        };
+
+                        return View(Model);
+                    }
+                }
+            }
+
 
             PlaneListViewModel viewModel = new PlaneListViewModel
             {
-                Samoloty = repository.Samoloty,
-                Reservations = reservationRepository.reservations,
+                Samoloty = null,
+                Reservations = null,
                 Name = Name,
                 NickName = NickName,
-                Serwis = servicesRepository.Services
+                Serwis = null,
+                ListaSamolotów = Lista,
+                PlaneName = null
             };
 
-
             return View(viewModel);
+
         }
 
 
 
+        private List<string> output3;
+        private List<string> output4;
 
-
-        public PartialViewResult GetReservation(string name, string data, string Name, string NickName)
+        public PartialViewResult GetReservation(string name, string data, string username)
         {
 
-            output = reservationRepository.GetReservation(name, data);
+            output3 = reservationRepository.GetReservation(name, data);
+            output4 = reservationRepository.GetSpecificReservationForName(name, data, username);
+
 
             ReservationsListViewModel viewModel = new ReservationsListViewModel
             {
-                reservations = output
+                reservations = output3,
+                hisreservations = output4
             };
 
+            ViewBag.Name = username;
 
             return PartialView(viewModel);
         }
@@ -320,6 +375,13 @@ namespace AeroKlub.UI.Controllers
             return RedirectToAction("Rezerwacja", "Reservation", viewModel);
         }
 
-        
+
+        [HttpPost]
+        public ActionResult SerchPlane(string PlaneName, string Name, string NickName)
+        {
+
+            return RedirectToAction("Index", new { PlaneName = PlaneName, All = false, Name = Name, NickName = NickName });
+        }
+
     }
 }

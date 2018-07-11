@@ -18,37 +18,93 @@ namespace AeroKlub.UI.Controllers
         private List<string> output;
         private List<string> output1;
 
-        public UserController(IPlaneRepository repo , IReservationRepository repo1 , IServicesRepository repo2)
+        public UserController(IPlaneRepository repo, IReservationRepository repo1, IServicesRepository repo2)
         {
             repository = repo;
             reservationRepository = repo1;
             servicesRepository = repo2;
         }
 
-        public ActionResult Index(string Name, string NickName)
+        public ActionResult Index(string Name, string NickName, string PlaneName, bool All)
         {
 
-            PlaneListViewModel viewModel = new PlaneListViewModel
+
+            List<string> output = new List<string>();
+            foreach (var samolot in repository.Samoloty)
             {
-                Samoloty = repository.Samoloty, Reservations = null , Name = Name , NickName = NickName,
-                Serwis = servicesRepository.Services
-            };
+                output.Add(samolot.Nazwa);
+            }
+            SelectList Lista = new SelectList(output);
+
+            if (String.IsNullOrWhiteSpace(PlaneName) == true && All == true)
+            {
+
+                PlaneListViewModel viewModel1 = new PlaneListViewModel
+                {
+                    Samoloty = repository.Samoloty,
+                    Reservations = null,
+                    Name = Name,
+                    NickName = NickName,
+                    Serwis = servicesRepository.Services,
+                    ListaSamolotów = Lista,
+                    PlaneName = null
+                };
+
+                return View(viewModel1);
+            }
+            else if (String.IsNullOrWhiteSpace(PlaneName) == false)
+            {
 
 
-            return View(viewModel);
+                foreach (var samolot in repository.Samoloty)
+                {
+                    if (samolot.Nazwa == PlaneName)
+                    {
+                        PlaneListViewModel Model = new PlaneListViewModel
+                        {
+                            PlaneName = samolot.Nazwa,
+                            Reservations = null,
+                            Name = Name,
+                            NickName = NickName,
+                            Serwis = servicesRepository.Services,
+                            ListaSamolotów = Lista
+                        };
+
+                        return View(Model);
+                    }
+                }
+            }
+
+
+                PlaneListViewModel viewModel = new PlaneListViewModel
+                {
+                    Samoloty = null,
+                    Reservations = null,
+                    Name = Name,
+                    NickName = NickName,
+                    Serwis = null,
+                    ListaSamolotów = Lista,
+                    PlaneName = null
+                };
+
+                return View(viewModel);
+   
         }
 
+   
+     
 
-        public PartialViewResult GetReservation(string name, string data ,string username)
+
+        public PartialViewResult GetReservation(string name, string data, string username)
         {
 
             output = reservationRepository.GetReservation(name, data);
             output1 = reservationRepository.GetSpecificReservationForName(name, data, username);
-            
+
 
             ReservationsListViewModel viewModel = new ReservationsListViewModel
             {
-                reservations = output , hisreservations = output1
+                reservations = output, hisreservations = output1
             };
 
             ViewBag.Name = username;
@@ -71,15 +127,21 @@ namespace AeroKlub.UI.Controllers
             return View(viewModel);
         }
 
-        public ActionResult DeleteReservation(int ID , string Name1)
+        public ActionResult DeleteReservation(int ID, string Name1)
         {
-           
+
             reservationRepository.DeleteReservation(ID);
 
 
-            return RedirectToAction("GetHisReservations" , new { Name = Name1 });
+            return RedirectToAction("GetHisReservations", new { Name = Name1 });
         }
 
+        [HttpPost]
+        public ActionResult SerchPlane(string PlaneName , string Name , string NickName)
+        {
+
+            return RedirectToAction("Index" , new { PlaneName = PlaneName , All = false , Name = Name , NickName = NickName});
+        }
 
 
     }

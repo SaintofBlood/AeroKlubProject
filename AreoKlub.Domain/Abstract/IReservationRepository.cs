@@ -11,12 +11,14 @@ namespace AreoKlub.Domain.Abstract
     {
         IEnumerable<Reservation> reservations { get; }
 
-        List<string> GetReservation(string name, string data) ;
+        List<string> GetReservation(string name, string data);
 
         void AddReservation(Reservation reservation);
 
         void DeleteReservation(int ReservationID);
 
         List<string> GetSpecificReservationForName(string name, string date, string username);
+
+        IEnumerable<string> GetReservationWithoutPrefix(string name, string data);
     }
 }

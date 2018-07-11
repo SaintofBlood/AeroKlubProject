@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace AreoKlub.Domain.Concrate
 {
-    public class EFReservationRepository  : IReservationRepository
+    public class EFReservationRepository : IReservationRepository
     {
         private EFDbContext context = new EFDbContext();
         private List<string> output = new List<string>();
         private List<string> output1 = new List<string>();
+        private List<string> output2 = new List<string>();
+        private IEnumerable<string> output3;
 
         public IEnumerable<Reservation> reservations
         {
@@ -22,17 +24,32 @@ namespace AreoKlub.Domain.Concrate
             }
         }
 
-        public List<string> GetReservation(string name , string data)
-        {   
+        public List<string> GetReservation(string name, string data)
+        {
 
-           foreach(var reservation in reservations)
+            foreach (var reservation in reservations)
             {
-                if(name == reservation.PlaneName && data == reservation.Date)
+                if (name == reservation.PlaneName && data == reservation.Date)
                 {
                     output.Add("Od godziny: " + reservation.From + " , do godziny: " + reservation.To);
                 }
             }
             return output;
+        }
+
+        public IEnumerable<string> GetReservationWithoutPrefix(string name, string data)
+        {
+        
+            foreach (var reservation in reservations)
+            {
+                if (name == reservation.PlaneName && data == reservation.Date)
+                {
+                    output2.Add(reservation.From + "," + reservation.To);
+                }
+            }
+
+ 
+            return output2.AsEnumerable();
         }
 
         public void AddReservation(Reservation reservation)

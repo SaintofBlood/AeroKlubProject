@@ -20,7 +20,13 @@ namespace AeroKlub.UI.Controllers
             usersRepository = repository1;
         }
 
-        public PartialViewResult Rezerwacja(string PlaneName, string Date, string Name, int Number , string By , string NickName)
+        public string[] wait;
+       // public int[] oneSet;
+        List<int> oneSet = new List<int>();
+        List<int> twoSet = new List<int>();
+        //public int[] twoSet;
+
+        public PartialViewResult Rezerwacja(string PlaneName, string Date, string Name, int Number , string By , string NickName , bool All)
         {
             ViewBag.Plane = PlaneName;
             ViewBag.Date = Date;
@@ -28,6 +34,76 @@ namespace AeroKlub.UI.Controllers
             ViewBag.Number = Number;
             ViewBag.By = By;
             ViewBag.Nickname = NickName;
+            ViewBag.All = All.ToString();
+            
+              
+            string output = "background: linear-gradient(90deg";
+
+           // var list = reservationRepository.GetReservationWithoutPrefix(Name, Date);
+
+
+            foreach(var reservation in reservationRepository.reservations) 
+            {
+                if (reservation.PlaneName == PlaneName && reservation.Date == Date)
+                {
+                    oneSet.Add(reservation.From);
+                    twoSet.Add(reservation.To);
+
+                   // throw new Exception();
+/*
+                    int one = reservation.From;
+                    int two = reservation.To;
+
+                   
+                    output += " , rgba(0,0,0,0) " + (one * (4.16)).ToString().Replace(',' , '.') + "%, rgba(255,51,51,0.9) " + (one * (4.16)).ToString().Replace(',', '.') + "%,rgba(255,51,51,0.9) " + (two * (4.16)).ToString().Replace(',', '.') + "%,rgba(0,0,0,0) " + (two * (4.16)).ToString().Replace(',', '.') + "%";
+                    */
+                }
+            }
+
+            for(int z = 0; z < ( oneSet.Count() ) - 1; z++)
+            {
+
+
+                if (oneSet[z] > oneSet[z+1])
+                {
+                    int sec = 0;
+                    int sek = 0;
+                    sec = oneSet[z ];
+                    sek = oneSet[z + 1];
+
+                    oneSet[z] = sek;
+                    oneSet[z + 1] = sec;
+
+                    sec = twoSet[z];
+                    sek = twoSet[z + 1];
+
+                    twoSet[z] = sek;
+                    twoSet[z + 1] = sec;
+
+                    z = 0;
+                }
+
+                 
+
+            }
+
+           /* if (oneSet.Count() > 1)
+            {
+                throw new Exception(oneSet.ToString() + "+" + twoSet.ToString());
+            }
+            */
+
+
+            for (int z = 0; z < oneSet.Count(); z++)
+            {
+                output += " , rgba(0,0,0,0) " + (oneSet[z] * (4.16)).ToString().Replace(',', '.') + "%, rgba(255,51,51,0.9) " + (oneSet[z] * (4.16)).ToString().Replace(',', '.') + "%,rgba(255,51,51,0.9) " + (twoSet[z] * (4.16)).ToString().Replace(',', '.') + "%,rgba(0,0,0,0) " + (twoSet[z] * (4.16)).ToString().Replace(',', '.') + "%";
+            }
+
+
+            output += " );";
+
+            ViewBag.StringCreator = output;
+
             return PartialView();
         }
 
@@ -38,7 +114,7 @@ namespace AeroKlub.UI.Controllers
 
 
        [HttpPost]
-        public ActionResult AddReservation(Reservation reservation , string Nickname , string TOUS , string FROMUS)
+        public ActionResult AddReservation(Reservation reservation , string Nickname , string TOUS , string FROMUS , string All)
         {
 
              string[] Times = TOUS.Split('.');
@@ -66,7 +142,7 @@ namespace AeroKlub.UI.Controllers
                         if (to - Rezerwacja.To < 0)
                         {
                             CanBeReached = false;
-                        }
+                        }                 
                     }
                     else if (to >= Rezerwacja.From && from <= Rezerwacja.To)
                     {
@@ -79,12 +155,16 @@ namespace AeroKlub.UI.Controllers
                             CanBeReached = false;
                         }
                     }
-
+                    else
+                    {
+                        CanBeReached = false;
+                    }
                     
                 }
             }
 
-            
+
+             
 
             if (CanBeReached == true)
             {
@@ -103,11 +183,17 @@ namespace AeroKlub.UI.Controllers
                 if (Nickname == user.Username)
                 {
                     if (user.Role == "Admin")
-                        return RedirectToAction("Index", "Admin", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname });
+                        if (Convert.ToBoolean(All) == true)
+                            return RedirectToAction("Index", "Admin", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname , All = true });
+                        else
+                            return RedirectToAction("Index", "Admin", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname, All = false, PlaneName = reservation.PlaneName });
                     if (user.Role == "Mechanic")
                         return RedirectToAction("Index", "Mechanic");
                     if (user.Role == "User")
-                        return RedirectToAction("Index", "User", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname });
+                        if(Convert.ToBoolean(All) == true)
+                        return RedirectToAction("Index", "User", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname  , All = true });
+                    else
+                            return RedirectToAction("Index", "User", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname, All = false, PlaneName = reservation.PlaneName });
                 }
             }
 
