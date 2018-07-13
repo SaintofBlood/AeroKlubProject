@@ -10,7 +10,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
-	<title>GetHisReservations</title>
+	<title>Twoje rezerwacje</title>
 
 
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -36,7 +36,7 @@
 					@Html.ActionLink("Twoje rezerwacje", "GetHisReservations", "User", new { Name = Model.Name, NickName = Model.NickName } , new { @class = "nav-link" })
 				</li>
 				<li class="nav-item">
-					@Html.ActionLink("Wyloguj", "Login", "Login", null, new { @class = "nav-link" })
+					@Html.ActionLink("Wyloguj", "Login", "Login", new { Clear = true }, new { @class = "nav-link" })
 				</li>
 			</ul>
 		</div>

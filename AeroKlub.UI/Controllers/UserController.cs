@@ -25,7 +25,7 @@ namespace AeroKlub.UI.Controllers
             servicesRepository = repo2;
         }
 
-        public ActionResult Index(string Name, string NickName, string PlaneName, bool All)
+        public ActionResult Index(string Name, string NickName, string PlaneName, bool? All)
         {
 
 

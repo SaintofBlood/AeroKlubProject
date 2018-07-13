@@ -57,8 +57,10 @@ namespace AeroKlub.UI.Infrastructure
 
         public override string[] GetRolesForUser(string username)
         {
-              string data = this.repository.Users.Where(x => x.Username == username).FirstOrDefault().Role;
+              string data = repository.Users.Where(x => x.Username == username).FirstOrDefault().Role;
               string[] result = { data };
+
+           
               return result;
 
         }

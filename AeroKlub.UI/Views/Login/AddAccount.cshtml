@@ -8,24 +8,55 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
-	<title>AddAccount</title>
+	<title>Dodaj konto</title>
 
+
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
 	<link href="~/Content/NavbarStyle.css" rel="stylesheet" />
 
+	<style>
+		.col-centered {
+			margin: 0 auto;
+			float: none;
+		}
+
+		.inline{
+			display:inline;
+		}
+	</style>
 </head>
 <body>
-	<div>
+
+	@if (TempData["LoginErrorMessage"] != null)
+	{
+		<script src="~/Scripts/bootbox.min.js"></script>
+		<script src="~/Scripts/bootbox.js"></script>
+
+		<script>
+
+				bootbox.alert({
+					size: "small",
+					title: "Błąd",
+					message: '@TempData["LoginErrorMessage"]'
+				})
+		</script>
+
+	}
+
+	<div class="container-fluid text-center">
 
 		@using (Html.BeginForm("AddAccountToRepository", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
 		{
-			@Html.TextArea("Name")
-			@Html.TextArea("Nickname")
-			@Html.TextArea("paswd")
-			@Html.TextArea("email")
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Login:  </p>@Html.TextBox("Name", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Imię:  </p>@Html.TextBox("FirstName", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Nazwisko:  </p>@Html.TextBox("Lastname", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Hasło:  </p>@Html.Password("paswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Powtórz hasło:  </p>@Html.Password("secondpaswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">E-Mail:  </p>@Html.TextBox("email", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
 
-			<input type="submit" value="Dodaj konto"/>
+			<input type="submit" value="Dodaj konto" class="btn btn-danger" style="margin-top:10px" />
 		}
 
 	</div>

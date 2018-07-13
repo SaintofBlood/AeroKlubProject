@@ -15,10 +15,9 @@ namespace AeroKlub.UI.Infrastructure
         {
             List<string> roles = new List<string>(roleKeys.Length);
 
-            //foreach(var roleKey in roleKeys) {
-            //roles.Add(ConfigurationManager.AppSettings["DirectorRole"]);
-            //}
+            
             var allRoles = (NameValueCollection)ConfigurationManager.GetSection("roles");
+
             foreach (var roleKey in roleKeys)
             {
                 roles.Add(allRoles[roleKey]);

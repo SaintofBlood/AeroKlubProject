@@ -86,7 +86,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Reservation.cs" />
     <Compile Include="Entities\Samolot.cs" />
-    <Compile Include="Entities\User1.cs" />
+    <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

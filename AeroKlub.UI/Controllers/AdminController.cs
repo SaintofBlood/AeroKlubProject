@@ -1,6 +1,7 @@
 ﻿using AeroKlub.UI.Models;
 using AreoKlub.Domain.Abstract;
 using AreoKlub.Domain.Entities;
+using AreoKlub.Domain.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace AeroKlub.UI.Controllers
         private IServicesRepository servicesRepository;
         private IUsersRepository userRepository;
 
-        private List<string> output;
+        
 
         public AdminController(IPlaneRepository planeRepository, IReservationRepository reservationRepository, IServicesRepository repository, IUsersRepository repository1)
         {
@@ -381,6 +382,92 @@ namespace AeroKlub.UI.Controllers
         {
 
             return RedirectToAction("Index", new { PlaneName = PlaneName, All = false, Name = Name, NickName = NickName });
+        }
+
+
+        public ViewResult ChangeUserRole(string Name , string NickName)
+        {
+            List<string> output = new List<string>();
+
+            foreach (var user in userRepository.Users)
+            {
+                if(user.Role != "Admin" && user.Role != "Mechanic")
+                output.Add(user.Name);
+            }
+
+            SelectList list = new SelectList(output);
+
+            UsersList usersList = new UsersList
+            {
+                UserList = list , Name = Name , NickName = NickName
+            };
+
+            return View(usersList);
+        }
+
+        [HttpPost]
+        public ActionResult ChangeUserRole(string Name, string AdminName, string AdminNickname)
+        {
+
+            userRepository.ChangeRoleOfUserToMechanic(Name);
+
+            return RedirectToAction("ChangeUserRole" , new { Name = AdminName , NickName = AdminNickname });
+        }
+
+
+        public ActionResult AddManuallyUser(string Name , string NickName)
+        {
+            PlaneListViewModel viewModel = new PlaneListViewModel {
+
+                Name = Name , NickName = NickName
+
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddManuallyUser(string NameOfUser, string FirstName, string Lastname, string paswd, string secondpaswd, string email , string AdminName , string AdminNickname)
+        {
+
+            if (paswd != secondpaswd)
+            {
+                TempData["AdminMessage"] = "Podano różne od siebie hasła!";
+                return RedirectToAction("AddAccount");
+            }
+            else
+            {
+                var keyNew = Helper.GeneratePassword(10);
+                var password = Helper.EncodePassword(paswd, keyNew);
+
+                userRepository.AddUserToRepository(FirstName + "_" + Lastname, NameOfUser, password, keyNew, email);
+
+                TempData["AdminMessage"] = "Udało się stworzyć konto !";
+
+
+
+                return RedirectToAction("AddManuallyUser" , new { Name = AdminName , NickName = AdminNickname});
+            }
+        }
+
+
+        public ViewResult DeleteUser(string Name , string Nickname)
+        {
+
+            UsersList viewModel = new UsersList
+            {
+                UserList = userRepository.UserList() , Name = Name , NickName = Nickname
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteUser(string Name, string AdminName, string AdminNickname)
+        {
+
+            userRepository.DeleteUser(Name);
+
+            return RedirectToAction("DeleteUser" , new { Name = AdminName, NickName = AdminNickname });
         }
 
     }

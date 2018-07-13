@@ -1,7 +1,8 @@
 ﻿@model AeroKlub.UI.Models.PlaneListViewModel
 
+
 @{
-	Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -9,8 +10,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
-	<title>Dodaj samolot</title>
-
+	<title>Dodaj manualnie użytkownika</title>
 
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
@@ -18,21 +18,15 @@
 	<link href="~/Content/NavbarStyle.css" rel="stylesheet" />
 
 	<style>
- 
 		.col-centered {
 			margin: 0 auto;
 			float: none;
 		}
 
-		.bootbox .modal-header {
-			display: block;
-		}
 	</style>
-
 </head>
 <body>
-
-	@if (TempData["addplanemessage"] != null)
+	@if (TempData["AdminMessage"] != null)
 	{
 		<script src="~/Scripts/bootbox.min.js"></script>
 		<script src="~/Scripts/bootbox.js"></script>
@@ -41,13 +35,12 @@
 
 				bootbox.alert({
 					size: "small",
-					title: "Dodanie samolotu",
-					message: '@TempData["addplanemessage"]'
+					title: "Konto",
+					message: '@TempData["AdminMessage"]'
 				})
 		</script>
 
 	}
-
 
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand">Areo Klub</a>
@@ -104,37 +97,22 @@
 		</div>
 
 	</nav>
-
-
-
 	<div class="container-fluid text-center">
 
 
-		<h4>Dodaj samolot</h4>
-
-		@using (Html.BeginForm("AddPlaneToReposiotry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+		@using (Html.BeginForm("AddManuallyUser", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 		{
-			<div class="text-center">
-				Nazwa Samolotu:
-				@Html.TextArea("NazwaSamolotu", new { @class = "form-control col-centered", @style = "width:20%" })
-			</div>
-			<div>
-				Ilość wylatanych motogodzin (np.100) :
-				@Html.TextArea("Przebieg", new { @class = "form-control col-centered", @style = "width:20%" })
-			</div>
-			<div>
-				@Html.TextArea("Name", Model.Name, new { @readonly = true, style = "display:none" })
-			</div>
-			<div>
-				@Html.TextArea("Nickname", Model.NickName, new { @readonly = true, style = "display:none" })
-			</div>
-			<div style="padding-top:1%">
-				<input type="submit" value="Zapisz" class="btn btn-warning" />
-			</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Login:  </p>@Html.TextBox("NameOfUser", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Imię:  </p>@Html.TextBox("FirstName", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Nazwisko:  </p>@Html.TextBox("Lastname", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Hasło:  </p>@Html.Password("paswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Powtórz hasło:  </p>@Html.Password("secondpaswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">E-Mail:  </p>@Html.TextBox("email", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+			@Html.TextBox("AdminName", Model.Name, new { @readonly = true, @style = "display:none" })
+			@Html.TextBox("AdminNickname", Model.NickName, new { @readonly = true, @style = "display:none" })
+			<input type="submit" value="Dodaj konto" class="btn btn-danger" style="margin-top:10px" />
 		}
 
-
 	</div>
-
 </body>
 </html>

@@ -59,14 +59,23 @@
 						@Html.ActionLink("Lista serwisów samolotów", "PlaneServices", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
 					</div>
 				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Użytkownicy
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						@Html.ActionLink("Dodaj użytkownika manualnie", "AddManuallyUser", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
+						@Html.ActionLink("Usuń użytkownika", "DeleteUser", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
+						@Html.ActionLink("Zmień uprawnienia użytkownika", "ChangeUserRole", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
+					</div>
+				</li>
 				<li class="nav-item">
-					@Html.ActionLink("Wyloguj", "Login", "Login", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "nav-link" })
+					@Html.ActionLink("Wyloguj", "Login", "Login", new { Clear = true }, new { @class = "nav-link" })
 				</li>
 			</ul>
 		</div>
 
 	</nav>
-
 	<div class="container-fluid text-center">
 
 		<h4 style="padding-top: 1%; padding-bottom:1%;" class="text-center">Spis samolotów</h4>

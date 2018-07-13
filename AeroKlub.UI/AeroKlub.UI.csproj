@@ -277,12 +277,13 @@
     <Compile Include="Infrastructure\Concrate\FormsAuthProvider.cs" />
     <Compile Include="Infrastructure\MyAuthorizeAttribute.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\SessionContext.cs" />
     <Compile Include="Infrastructure\SiteRole.cs" />
-    <Compile Include="Infrastructure\UserSite.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PlaneListViewModel.cs" />
     <Compile Include="Models\ReservationsListViewModel.cs" />
     <Compile Include="Models\ReservationViewModel.cs" />
+    <Compile Include="Models\UsersList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -319,7 +320,10 @@
     <Content Include="Views\Admin\DeleteService.cshtml" />
     <Content Include="Views\Mechanic\PlaneList.cshtml" />
     <Content Include="Views\Login\AddAccount.cshtml" />
-    <Content Include="Views\Login\Test.cshtml" />
+    <Content Include="Views\Admin\ChangeUserRole.cshtml" />
+    <Content Include="Views\Login\NoPermission.cshtml" />
+    <Content Include="Views\Admin\AddManuallyUser.cshtml" />
+    <Content Include="Views\Admin\DeleteUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
