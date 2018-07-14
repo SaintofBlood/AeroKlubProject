@@ -1,5 +1,7 @@
 # AeroKlubProject
 
+Wraz z refem 0.2 zalecam stworzenie nowych baz danych!
+
 Jeżeli dane nie wyświetlają się poprawnie , zalecam tryb "raw"
 
 Baza danych:
@@ -46,12 +48,18 @@ CREATE TABLE [dbo].[Services] (
 - Users
 
 CREATE TABLE [dbo].[Users] (
-    [Id]       INT           IDENTITY (1, 1) NOT NULL,
-    [Username] NVARCHAR (20) NOT NULL,
-    [Role]     NVARCHAR (20) NOT NULL,
-    [Name]     NVARCHAR (40) NOT NULL,
+    [Id]           INT            IDENTITY (1, 1) NOT NULL,
+    [Username]     NVARCHAR (20)  NULL,
+    [Name]         NVARCHAR (40)  NULL,
+    [Password]     NVARCHAR (120) NULL,
+    [VCode]        NVARCHAR (100) NULL,
+    [Email]        NVARCHAR (40)  NULL,
+    [Role]         NVARCHAR (20)  NULL,
+    [CreationDate] NVARCHAR (20)  NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
 Przykładowe dane do tabel:
 
@@ -90,12 +98,13 @@ SET IDENTITY_INSERT [dbo].[Services] OFF
 - Users
 
 SET IDENTITY_INSERT [dbo].[Users] ON
-INSERT INTO [dbo].[Users] ([Id], [Username], [Role], [Name]) VALUES (1, N'admin', N'Admin', N'Admin_NAME')
-INSERT INTO [dbo].[Users] ([Id], [Username], [Role], [Name]) VALUES (2, N'user', N'User', N'Michał_Kochanowicz')
-INSERT INTO [dbo].[Users] ([Id], [Username], [Role], [Name]) VALUES (3, N'mechanic', N'Mechanic', N'Adam_Sachulski')
-INSERT INTO [dbo].[Users] ([Id], [Username], [Role], [Name]) VALUES (4, N'user1', N'User', N'Schabowski_Wiktor')
+INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email], [Role], [CreationDate]) VALUES (24, N'admin', N'Admin_Account', N'50-6F-E9-AD-12-DB-A0-1F-3E-30-B8-0F-B1-EF-52-38', N'oqF10UYi29', N'admin@gmail.com', N'Admin', NULL)
+INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email], [Role], [CreationDate]) VALUES (33, N'user', N'Jan_Kowalski', N'64-A7-06-19-43-4A-86-FF-12-97-3A-C0-3D-1E-AB-29', N'si4Onod412', N'user@gmail.com', N'User', NULL)
+INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email], [Role], [CreationDate]) VALUES (34, N'mechanic', N'Adam_Sachulski', N'D3-31-A3-41-22-7F-B0-0B-57-19-A4-4F-B2-F3-2F-85', N'Lzbsdbg0Go', N'mechanic@gmail.com', N'Mechanic', NULL)
+INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email], [Role], [CreationDate]) VALUES (40, N'user1', N'Janek_Kowalski', N'E6-81-0A-C3-CD-9A-AD-58-30-5E-FB-0A-20-72-C3-93', N'8W9W5Efygc', N'JanekKowalski@gmail.com', N'User', N'13.07.2018')
 SET IDENTITY_INSERT [dbo].[Users] OFF
 
+Jeżeli baza danych użytkowników nie będzie działać , to trzeba ręcznie dodać 3 użytkowników z poziomu loginu , po czym jednemu nadać Role = "Admin". Rolę mechanica możemy dodać  z Panelu Administratora.
 
 Po dodaniu danych , kopujemy connectionstring , i podmieniamy go , w pliku Web.config , w miejscu :
 
@@ -112,4 +121,4 @@ L:P
 user:user - Rola użytkownika;
 mechanic:mechanic - Rola mechanica;
 admin:admin - Rola administratora;
-
+user1:user1 - Rola użytkownika
