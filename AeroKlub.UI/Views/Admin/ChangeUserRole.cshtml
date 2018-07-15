@@ -83,7 +83,7 @@
 
 	<div class="container-fluid text-center">
 
-		<h3>Wybierz użytkownika , któremu chcesz zmienić uprawnienia na mechanika:</h3>
+		<h3 style="margin-bottom: 3%;">Wybierz użytkownika , któremu chcesz zmienić uprawnienia na mechanika:</h3>
 		@if (Model.UserList.Any() == true && Model.UserList.Count() >= 1)
 		{
 			using (Html.BeginForm("ChangeUserRole", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))

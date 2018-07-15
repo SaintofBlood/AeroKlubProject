@@ -20,6 +20,11 @@
 		.bootbox .modal-header {
 			display: block;
 		}
+		.col-centered {
+			margin: 0 auto;
+			float: none;
+		}
+
 	</style>
 </head>
 <body>
@@ -106,20 +111,20 @@
 			{
 				<div style="padding-top:1%;padding-bottom:1%">
 					Wybierz samolot:
-					@Html.DropDownList("Plane", Model.ListaSamolotów)
+					@Html.DropDownList("Plane", Model.ListaSamolotów, new { @class = "form-control col-centered", style = "width:auto" })
 				</div>
 
-				<div style="padding-top:1%;padding-bottom:1%">
+				<div>
 					Wybierz mechanika:
-					@Html.DropDownList("Mechanic", Model.MechanicList)
+					@Html.DropDownList("Mechanic", Model.MechanicList, new { @class = "form-control col-centered", style = "width:auto" }) 
 				</div>
 
 				@Html.TextArea("Name", Model.Name, new { @readonly = true, style = "display:none" })
 				@Html.TextArea("Nickname", Model.NickName, new { @readonly = true, style = "display:none" })
 
 				<div style="padding-top:1%;padding-bottom:1%">
-					Wybierz datę:
-					<input id="Date" name="Date" autocomplete="off">
+					<p>Wybierz datę:</p>
+					<input id="Date" name="Date" autocomplete="off"  class="form-control" style="width: auto;float: none;margin: auto;text-align:center;">
 				</div>
 
 

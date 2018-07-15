@@ -14,7 +14,7 @@
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
 
-	<title>AdminLogin</title>
+	<title>Logowanie</title>
 	<style>
 		.field-validation-error {
 			color: #f00;
@@ -46,6 +46,23 @@
 	</style>
 </head>
 <body>
+
+	@if (TempData["LoginErrorMessage"] != null)
+	{
+		<script src="~/Scripts/bootbox.min.js"></script>
+		<script src="~/Scripts/bootbox.js"></script>
+
+		<script>
+
+				bootbox.alert({
+					size: "small",
+					title: "Logowanie",
+					message: '@TempData["LoginErrorMessage"]'
+				})
+		</script>
+
+	}
+
 	<div class="container-fluid">
 		<div style="margin:auto ; width:540px; padding: 8% 0px 0px 0px" class="text-center">
 			<h1 style="text-align:center; font-size:4.5rem; padding: 0 0 3% 0">AeroKlub</h1>
@@ -69,7 +86,7 @@
 	</div>
 
 	<div style="padding-top:1%" class="text-center">
-		@Html.ActionLink("Nie posiadasz konta?" , "AddAccount" , "Login" , new { @class = "btn btn-outline-warning"})
+		@Html.ActionLink("Nie posiadasz konta?", "AddAccount", null , new { @class = "btn btn-outline-warning" })
 	</div>
 </body>
 </html>

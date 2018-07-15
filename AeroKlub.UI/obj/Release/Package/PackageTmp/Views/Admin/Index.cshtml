@@ -11,6 +11,7 @@
 <html>
 <head>
 
+	<title>Strona główna</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="~/css/nouislider.css" rel="stylesheet" />
 	<script src="~/Scripts/nouislider.js"></script>
@@ -104,8 +105,18 @@
 						@Html.ActionLink("Lista serwisów samolotów", "PlaneServices", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
 					</div>
 				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Użytkownicy
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						@Html.ActionLink("Dodaj użytkownika manualnie", "AddManuallyUser", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
+						@Html.ActionLink("Usuń użytkownika", "DeleteUser", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
+						@Html.ActionLink("Zmień uprawnienia użytkownika", "ChangeUserRole", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
+					</div>
+				</li>
 				<li class="nav-item">
-					@Html.ActionLink("Wyloguj", "Login", "Login", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "nav-link" })
+					@Html.ActionLink("Wyloguj", "Login", "Login", new { Clear = true }, new { @class = "nav-link" })
 				</li>
 			</ul>
 		</div>

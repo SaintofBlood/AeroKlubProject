@@ -1,7 +1,7 @@
-﻿@model AeroKlub.UI.Models.PlaneListViewModel
+﻿@model AeroKlub.UI.Models.UsersList
 
 @{
-	Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -9,8 +9,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
-	<title>Dodaj samolot</title>
-
+	<title>Zmień uprawnienia użytkownika</title>
 
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
@@ -18,36 +17,13 @@
 	<link href="~/Content/NavbarStyle.css" rel="stylesheet" />
 
 	<style>
- 
 		.col-centered {
 			margin: 0 auto;
 			float: none;
 		}
-
-		.bootbox .modal-header {
-			display: block;
-		}
 	</style>
-
 </head>
 <body>
-
-	@if (TempData["addplanemessage"] != null)
-	{
-		<script src="~/Scripts/bootbox.min.js"></script>
-		<script src="~/Scripts/bootbox.js"></script>
-
-		<script>
-
-				bootbox.alert({
-					size: "small",
-					title: "Dodanie samolotu",
-					message: '@TempData["addplanemessage"]'
-				})
-		</script>
-
-	}
-
 
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand">Areo Klub</a>
@@ -105,35 +81,25 @@
 
 	</nav>
 
-
-
 	<div class="container-fluid text-center">
 
-
-		<h4>Dodaj samolot</h4>
-
-		@using (Html.BeginForm("AddPlaneToReposiotry", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+		<h3>Wybierz użytkownika , któremu chcesz zmienić uprawnienia na mechanika:</h3>
+		@if (Model.UserList.Any() == true && Model.UserList.Count() >= 1)
 		{
-			<div class="text-center">
-				Nazwa Samolotu:
-				@Html.TextArea("NazwaSamolotu", new { @class = "form-control col-centered", @style = "width:20%" })
-			</div>
-			<div>
-				Ilość wylatanych motogodzin (np.100) :
-				@Html.TextArea("Przebieg", new { @class = "form-control col-centered", @style = "width:20%" })
-			</div>
-			<div>
-				@Html.TextArea("Name", Model.Name, new { @readonly = true, style = "display:none" })
-			</div>
-			<div>
-				@Html.TextArea("Nickname", Model.NickName, new { @readonly = true, style = "display:none" })
-			</div>
-			<div style="padding-top:1%">
-				<input type="submit" value="Zapisz" class="btn btn-warning" />
-			</div>
+			using (Html.BeginForm("ChangeUserRole", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			{
+				@Html.DropDownList("Name", Model.UserList, new { @class = "form-control col-centered", @style = "width:300px" });
+				@Html.TextArea("AdminName", Model.Name, new { @readonly = true, style = "display:none" })
+				@Html.TextArea("AdminNickname", Model.NickName, new { @readonly = true, style = "display:none" })
+				<div style="padding-top:2%">
+					<input type="submit" value="Zmień uprawinienia" class="btn btn-outline-warning" />
+				</div>
+			}
 		}
-
-
+		else
+		{
+			<p>Brak możliwości zmiany uprawnień , z powodu braku użytkowników!</p>
+		}
 	</div>
 
 </body>

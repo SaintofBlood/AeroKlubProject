@@ -11,16 +11,13 @@
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
 
+	<title>Dodaj serwis do samolotu</title>
 
 	<style>
 
 		body {
 			padding-top: 70px
 		}
-
-
-
-
 	</style>
 </head>
 <body>
@@ -59,7 +56,7 @@
 					@Html.ActionLink("Zaplanuj przegląd samolotu", "AddServiceToPlane", "Mechanic", new { Name = Model.Name, NickName = Model.NickName }, new { @class = "nav-link" })
 				</li>
 				<li class="nav-item">
-					@Html.ActionLink("Wyloguj", "Login", "Login", null, new { @class = "nav-link" })
+					@Html.ActionLink("Wyloguj", "Login", "Login", new { Clear = true }, new { @class = "nav-link" })
 				</li>
 			</ul>
 		</div>

@@ -19,6 +19,11 @@
 		.bootbox .modal-header {
 			display: block;
 		}
+
+		.col-centered {
+			margin: 0 auto;
+			float: none;
+		}
 	</style>
 </head>
 <body>
@@ -101,8 +106,8 @@
 		{
 			using (Html.BeginForm("DeleteServiceFromRepository", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 			{
-				<p style="padding-top:1%">Wybierz odpowiedni serwis samolotu do usunięcia (brak możliwości przywrócenia!):</p>
-				@Html.DropDownList("Link", Model.ServiceList)
+				<p style="padding-top:1%">Wybierz odpowiedni serwis samolotu do odwołania (brak możliwości przywrócenia!):</p>
+				@Html.DropDownList("Link", Model.ServiceList, new { @class = "form-control col-centered", style = "width:auto" })
 				@Html.TextArea("Name", Model.Name, new { @readonly = true, style = "display:none" })
 
 				<div style="padding-top:1%">

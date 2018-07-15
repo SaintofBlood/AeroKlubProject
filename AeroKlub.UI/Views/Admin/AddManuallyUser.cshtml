@@ -99,7 +99,7 @@
 	</nav>
 	<div class="container-fluid text-center">
 
-
+		<h3 style="margin-bottom: 2%;">Dodawanie użytkownika: </h3>
 		@using (Html.BeginForm("AddManuallyUser", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 		{
 			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Login:  </p>@Html.TextBox("NameOfUser", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
@@ -109,10 +109,12 @@
 			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Powtórz hasło:  </p>@Html.Password("secondpaswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
 			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">E-Mail:  </p>@Html.TextBox("email", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
 			@Html.TextBox("AdminName", Model.Name, new { @readonly = true, @style = "display:none" })
-			@Html.TextBox("AdminNickname", Model.NickName, new { @readonly = true, @style = "display:none" })
+			@Html.TextBox("AdminNickname", Model.NickName, new { @readonly = true, @style = "display:none" })\
+
+					@Html.ValidationSummary()
 			<input type="submit" value="Dodaj konto" class="btn btn-danger" style="margin-top:10px" />
 		}
-
+		@Html.ValidationSummary()
 	</div>
 </body>
 </html>

@@ -20,6 +20,11 @@
 		.bootbox .modal-header {
 			display: block;
 		}
+		.col-centered {
+			margin: 0 auto;
+			float: none;
+		}
+
 	</style>
 
 </head>
@@ -104,11 +109,13 @@
 
 		@if (Model.ListaSamolotów.Any() != false)
 		{
+
+			<h3 style="padding-bottom:2%">Usuwanie samolotów (brak możliwości przywrócenia ich!) :</h3>
 			using (Html.BeginForm("DeletePlaneFromRepository", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 			{
 				<div class="text-center">
 
-					@Html.DropDownList("PlaneName", Model.ListaSamolotów)
+					@Html.DropDownList("PlaneName", Model.ListaSamolotów , new {@class = "form-control col-centered", style = "width:auto"})
 
 				</div>
 				@Html.TextArea("Name", Model.Name, new { @readonly = true, style = "display:none" })

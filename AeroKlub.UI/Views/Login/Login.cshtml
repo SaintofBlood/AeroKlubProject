@@ -78,15 +78,18 @@
 				<input type="submit" value="Zaloguj się" class="btn btn-outline-success" align="right" style=" width:35%" />
 			}
 		</div>
-		@Html.ValidationSummary()
-		@if (string.IsNullOrWhiteSpace(ViewBag.Message) != true)
-		{
-			<div class="validation-summary-errors">@ViewBag.Message</div>
-		}
-	</div>
+
+	
 
 	<div style="padding-top:1%" class="text-center">
-		@Html.ActionLink("Nie posiadasz konta?", "AddAccount", null , new { @class = "btn btn-outline-warning" })
+		@Html.ActionLink("Nie posiadasz konta?", "AddAccount", null, new { @class = "btn btn-outline-warning" })
+	</div>
+
+	@Html.ValidationSummary()
+	@if (string.IsNullOrWhiteSpace(ViewBag.Message) != true)
+	{
+		<div class="validation-summary-errors">@ViewBag.Message</div>
+	}
 	</div>
 </body>
 </html>

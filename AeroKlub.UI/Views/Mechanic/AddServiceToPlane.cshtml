@@ -18,6 +18,11 @@
 		body {
 			padding-top: 70px
 		}
+
+		.col-centered {
+			margin: 0 auto;
+			float: none;
+		}
 	</style>
 </head>
 <body>
@@ -75,14 +80,14 @@
 
 				Nazwa samolotu:
 
-				@Html.DropDownList("PlaneName", Model.ListaSamolotów)
+				@Html.DropDownList("PlaneName", Model.ListaSamolotów, new { @class = "form-control col-centered", style = "width:auto" })
 
 
 
 			</div>
 			<div style="padding-top:1%">
-				Data:
-				<input id="Date" name="Date" autocomplete="off">
+				<p>Data:</p>
+				<input id="Date" name="Date" autocomplete="off" class="form-control" style="width: auto;float: none;margin: auto;text-align:center;">
 			</div>
 
 
