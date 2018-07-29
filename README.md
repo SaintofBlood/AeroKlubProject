@@ -83,7 +83,12 @@ CREATE TABLE [dbo].[Users] (
 ```
 
 
+
+
 Przykładowe dane do tabel:
+
+
+
 
 #### Reservations
 
@@ -134,6 +139,7 @@ INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email
 INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email], [Role], [CreationDate]) VALUES (40, N'user1', N'Janek_Kowalski', N'E6-81-0A-C3-CD-9A-AD-58-30-5E-FB-0A-20-72-C3-93', N'8W9W5Efygc', N'JanekKowalski@gmail.com', N'User', N'13.07.2018')
 SET IDENTITY_INSERT [dbo].[Users] OFF
 ```
+## WAŻNE
 
 Jeżeli baza danych użytkowników nie będzie działać , to trzeba ręcznie dodać 3 użytkowników z poziomu loginu , po czym jednemu nadać Role = "Admin". Rolę mechanica możemy dodać  z Panelu Administratora.
 
