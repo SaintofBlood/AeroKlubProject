@@ -16,6 +16,7 @@ O następujących kodach :
 
 - Reservations
 
+
  ` CREATE TABLE [dbo].[Reservations] (
     [ReservationID] INT           IDENTITY (1, 1) NOT NULL,
     [PlaneName]     NVARCHAR (50) NOT NULL,
@@ -27,8 +28,9 @@ O następujących kodach :
 ); ` 
 
 - Samolots
-`
-CREATE TABLE [dbo].[Samolots] (
+
+
+`CREATE TABLE [dbo].[Samolots] (
     [PlaneID]         INT            IDENTITY (1, 1) NOT NULL,
     [Nazwa]           NVARCHAR (MAX) NULL,
     [WylataneGodziny] INT            NULL,
@@ -36,6 +38,7 @@ CREATE TABLE [dbo].[Samolots] (
 );`
 
 - Services
+
 
 `CREATE TABLE [dbo].[Services] (
     [Id]      INT          IDENTITY (1, 1) NOT NULL,
@@ -46,6 +49,7 @@ CREATE TABLE [dbo].[Samolots] (
 );`
 
 - Users
+
 
 `CREATE TABLE [dbo].[Users] (
     [Id]           INT            IDENTITY (1, 1) NOT NULL,
@@ -65,6 +69,7 @@ Przykładowe dane do tabel:
 
 - Reservations
 
+
 `SET IDENTITY_INSERT [dbo].[Reservations] ON
 INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], [To], [By]) VALUES (3209, N'Cessna_150', N'11.07.2018', 4, 17, N'Admin_NAME')
 INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], [To], [By]) VALUES (3210, N'Cessna_150', N'13.07.2018', 8, 19, N'Admin_NAME')
@@ -77,6 +82,7 @@ SET IDENTITY_INSERT [dbo].[Reservations] OFF
 `
 - Samolots
 
+
 `SET IDENTITY_INSERT [dbo].[Samolots] ON
 INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (29, N'Cessna_150', 6652)
 INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (30, N'Cessna_142', 521)
@@ -85,6 +91,7 @@ INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (32,
 SET IDENTITY_INSERT [dbo].[Samolots] OFF
 `
 - Services
+
 
 `SET IDENTITY_INSERT [dbo].[Services] ON
 INSERT INTO [dbo].[Services] ([Id], [Samolot], [Data], [By]) VALUES (17, N'BAF1234', N'06.07.2018', N'Adam_Sachulski')
@@ -96,6 +103,7 @@ INSERT INTO [dbo].[Services] ([Id], [Samolot], [Data], [By]) VALUES (29, N'Cessn
 SET IDENTITY_INSERT [dbo].[Services] OFF
 `
 - Users
+
 
 `SET IDENTITY_INSERT [dbo].[Users] ON
 INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email], [Role], [CreationDate]) VALUES (24, N'admin', N'Admin_Account', N'50-6F-E9-AD-12-DB-A0-1F-3E-30-B8-0F-B1-EF-52-38', N'oqF10UYi29', N'admin@gmail.com', N'Admin', NULL)
