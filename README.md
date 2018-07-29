@@ -1,8 +1,19 @@
 # AeroKlubProject
 
-Wraz z refem 0.2 zalecam stworzenie nowych baz danych!
+Jest to projekt systemu do zarządzania aeroklubem. 
+Jest to projekt ASP.NET MVC.
+Biblioteka użyta do ostylowania to Bootstrap ver.4
 
-Jeżeli dane nie wyświetlają się poprawnie , zalecam tryb "raw"
+## Aktualne funkcje:
+
+ - Rezerwowanie lotów
+ - Funkcje wykrywające brak możliwości rezerwacji
+ - Dodawanie i usuwanie:  samolotów , rezerwacji , mechaników jak i przeglądów samolotów
+ - Tworzenie użytkownika 
+ - Panel logowania 
+ - Szyfrowanie haseł użytkowników
+ - Wyświetlanie historii lotów
+ 
 
 ## Baza danych
 Tworzymy ją poprzez Eksplorator serwera , lokalnie. Powinna zawierać odpowiednie tabele:
