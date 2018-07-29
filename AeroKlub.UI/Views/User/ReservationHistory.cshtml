@@ -10,15 +10,14 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width" />
-	<title>Twoje rezerwacje</title>
-
+	<title>Historia rezerwacji</title>
 
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
 
 	<style>
-		body{
+		body {
 			padding-top: 70px;
 		}
 	</style>
@@ -40,15 +39,12 @@
 					<th>
 						W godzinach
 					</th>
-					<th>
-						Akcje
-					</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach (var reservation in Model.Reservations)
 				{
-					if (reservation.By == Model.Name && DateTime.ParseExact(reservation.Date, "dd.MM.yyyy", CultureInfo.InvariantCulture) >= DateTime.Today)
+					if (reservation.By == Model.Name)
 					{
 						<tr>
 							<td>
@@ -58,12 +54,7 @@
 								@reservation.Date
 							</td>
 							<td>
-								Od @reservation.From do @reservation.To
-							</td>
-							<td>
-								<div>
-									@Html.ActionLink("Odwołaj rezerwacje", "DeleteReservation", "User", new { Name1 = Model.Name, ID = reservation.ReservationID }, new { @class = "btn btn-danger" })
-								</div>
+								Od godziny @reservation.From do godziny @reservation.To
 							</td>
 						</tr>
 					}

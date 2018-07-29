@@ -32,35 +32,12 @@
 </head>
 <body>
 
-	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand">Areo Klub</a>
-
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					@Html.ActionLink("Home", "Index", "Mechanic", new { Name = Model.Name, NickName = Model.NickName }, new { @class = "nav-link" })
-				</li>
-
-				<li class="nav-item">
-					@Html.ActionLink("Spis samolotów", "PlaneList", "Mechanic", new { Name = Model.Name, NickName = Model.NickName }, new { @class = "nav-link" })
-				</li>
-
-				<li class="nav-item">
-					@Html.ActionLink("Zaplanuj przegląd samolotu", "AddServiceToPlane", "Mechanic", new { Name = Model.Name, NickName = Model.NickName }, new { @class = "nav-link" })
-				</li>
-				<li class="nav-item">
-					@Html.ActionLink("Wyloguj", "Login", "Login", new { Clear = true }, new { @class = "nav-link" })
-				</li>
-			</ul>
-		</div>
-	</nav>
+	@Html.Action("NavigationBar", "Mechanic", new { Name = Model.Name, Nickname = Model.NickName })
 
 	<div class="text-center container-fluid">
-		<h4 style="margin:auto">Rozkład serwisów dla @Model.Name</h4>
 
-	
 
-		<h5  style="padding:1%">Spis serwisów</h5>
+		<h5 style="padding:1%">Spis serwisów</h5>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -80,17 +57,17 @@
 				{
 					if (Servis.By == Model.Name)
 					{
-					<tr>
-						<td>
-							@Servis.Samolot
-						</td>
-						<td>
-							@Servis.Data
-						</td>
-						<td>
-							@Servis.By
-						</td>
-					</tr>
+						<tr>
+							<td>
+								@Servis.Samolot
+							</td>
+							<td>
+								@Servis.Data
+							</td>
+							<td>
+								@Servis.By
+							</td>
+						</tr>
 					}
 				}
 			</tbody>

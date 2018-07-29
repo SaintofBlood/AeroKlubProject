@@ -48,61 +48,8 @@
 	}
 
 
-	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand">Areo Klub</a>
+	@Html.Action("NavigationBar", "Admin", new { Name = Model.Name, Nickname = Model.NickName })
 
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					@Html.ActionLink("Home", "Index", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "nav-link" })
-				</li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Rezerwacje
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						@Html.ActionLink("Lista rezerwacji", "Reservations", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Samoloty
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						@Html.ActionLink("Spis Samolotów", "Samoloty", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-						@Html.ActionLink("Dodaj samolot", "AddPlane", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-						@Html.ActionLink("Usuń samolot", "DeletePlane", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Serwis samoltów
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						@Html.ActionLink("Dodaj serwis", "AddManuallyService", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-						@Html.ActionLink("Usuń serwis", "DeleteService", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-						@Html.ActionLink("Lista serwisów samolotów", "PlaneServices", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Użytkownicy
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						@Html.ActionLink("Dodaj użytkownika manualnie", "AddManuallyUser", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-						@Html.ActionLink("Usuń użytkownika", "DeleteUser", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-						@Html.ActionLink("Zmień uprawnienia użytkownika", "ChangeUserRole", "Admin", new { Name = Model.Name, Nickname = Model.NickName }, new { @class = "dropdown-item" })
-					</div>
-				</li>
-				<li class="nav-item">
-					@Html.ActionLink("Wyloguj", "Login", "Login", new { Clear = true }, new { @class = "nav-link" })
-				</li>
-			</ul>
-		</div>
-
-	</nav>
 
 
 	<div class="container-fluid text-center">
@@ -115,7 +62,7 @@
 			{
 				<div class="text-center">
 
-					@Html.DropDownList("PlaneName", Model.ListaSamolotów , new {@class = "form-control col-centered", style = "width:auto"})
+					@Html.DropDownList("PlaneName", Model.ListaSamolotów, new { @class = "form-control col-centered", style = "width:auto" })
 
 				</div>
 				@Html.TextArea("Name", Model.Name, new { @readonly = true, style = "display:none" })

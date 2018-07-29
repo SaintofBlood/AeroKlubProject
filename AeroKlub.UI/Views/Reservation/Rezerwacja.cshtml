@@ -1,17 +1,5 @@
 ﻿@model AreoKlub.Domain.Entities.Reservation
 
-
-<!DOCTYPE html>
-
-<html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-
-</head>
-<body>
 	<div class="container-fluid">
 		@using (Html.BeginForm("AddReservation", "Reservation", FormMethod.Post, new { enctype = "multipart/form-data", style = "position: relative;" }))
 		{
@@ -154,8 +142,6 @@
 
 	</script>
 
-
-
 	<style>
 
 
@@ -182,8 +168,3 @@
 	@String.Format(@ViewBag.StringCreator)
 		}
 	</style>
-
-
-</body>
-
-</html>

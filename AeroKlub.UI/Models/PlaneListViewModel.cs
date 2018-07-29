@@ -18,5 +18,6 @@ namespace AeroKlub.UI.Models
         public SelectList ListaSamolotów { get; set; }
         public SelectList MechanicList { get; set; }
         public SelectList ServiceList { get; set; }
+        public DateTime Date { get; set; }
     }
 }

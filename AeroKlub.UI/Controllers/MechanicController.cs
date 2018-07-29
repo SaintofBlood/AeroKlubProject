@@ -102,5 +102,18 @@ namespace AeroKlub.UI.Controllers
 
             return View(viewModel);
         }
+
+        public PartialViewResult NavigationBar(string Name , string Nickname)
+        {
+            PlaneListViewModel viewModel = new PlaneListViewModel
+            {
+                Name = Name,
+                NickName = Nickname
+               
+            };
+
+            return PartialView(viewModel);
+        }
+
     }
 }

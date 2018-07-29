@@ -39,8 +39,6 @@ namespace AeroKlub.UI.Controllers
               
             string output = "background: linear-gradient(90deg";
 
-           // var list = reservationRepository.GetReservationWithoutPrefix(Name, Date);
-
 
             foreach(var reservation in reservationRepository.reservations) 
             {
@@ -49,14 +47,7 @@ namespace AeroKlub.UI.Controllers
                     oneSet.Add(reservation.From);
                     twoSet.Add(reservation.To);
 
-                   // throw new Exception();
-/*
-                    int one = reservation.From;
-                    int two = reservation.To;
-
-                   
-                    output += " , rgba(0,0,0,0) " + (one * (4.16)).ToString().Replace(',' , '.') + "%, rgba(255,51,51,0.9) " + (one * (4.16)).ToString().Replace(',', '.') + "%,rgba(255,51,51,0.9) " + (two * (4.16)).ToString().Replace(',', '.') + "%,rgba(0,0,0,0) " + (two * (4.16)).ToString().Replace(',', '.') + "%";
-                    */
+               
                 }
             }
 
@@ -87,12 +78,7 @@ namespace AeroKlub.UI.Controllers
 
             }
 
-           /* if (oneSet.Count() > 1)
-            {
-                throw new Exception(oneSet.ToString() + "+" + twoSet.ToString());
-            }
-            */
-
+        
 
             for (int z = 0; z < oneSet.Count(); z++)
             {
@@ -184,16 +170,16 @@ namespace AeroKlub.UI.Controllers
                 {
                     if (user.Role == "Admin")
                         if (Convert.ToBoolean(All) == true)
-                            return RedirectToAction("Index", "Admin", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname , All = true });
+                            return RedirectToAction("Index", "Admin", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname , All = true, Date = reservation.Date });
                         else
-                            return RedirectToAction("Index", "Admin", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname, All = false, PlaneName = reservation.PlaneName });
+                            return RedirectToAction("Index", "Admin", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname, All = false, PlaneName = reservation.PlaneName , Date = reservation.Date});
                     if (user.Role == "Mechanic")
                         return RedirectToAction("Index", "Mechanic");
                     if (user.Role == "User")
                         if(Convert.ToBoolean(All) == true)
-                        return RedirectToAction("Index", "User", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname  , All = true });
+                        return RedirectToAction("Index", "User", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname  , All = true, Date = reservation.Date });
                     else
-                            return RedirectToAction("Index", "User", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname, All = false, PlaneName = reservation.PlaneName });
+                            return RedirectToAction("Index", "User", new { usersRepository.GetSpecificName(Nickname).Name, NickName = Nickname, All = false, PlaneName = reservation.PlaneName, Date = reservation.Date });
                 }
             }
 

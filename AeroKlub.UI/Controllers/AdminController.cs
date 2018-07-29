@@ -18,7 +18,7 @@ namespace AeroKlub.UI.Controllers
         private IServicesRepository servicesRepository;
         private IUsersRepository userRepository;
 
-        
+
 
         public AdminController(IPlaneRepository planeRepository, IReservationRepository reservationRepository, IServicesRepository repository, IUsersRepository repository1)
         {
@@ -28,9 +28,11 @@ namespace AeroKlub.UI.Controllers
             this.userRepository = repository1;
         }
 
-        public ActionResult Index(string Name, string NickName, string PlaneName, bool? All)
+        public ViewResult Index(string Name, string NickName, string PlaneName, bool? All , string Date)
         {
 
+           
+           
 
             List<string> output = new List<string>();
             foreach (var samolot in repository.Samoloty)
@@ -39,25 +41,87 @@ namespace AeroKlub.UI.Controllers
             }
             SelectList Lista = new SelectList(output);
 
-            if (String.IsNullOrWhiteSpace(PlaneName) == true && All == true)
+
+            
+
+            if (All == true)
             {
 
-                PlaneListViewModel viewModel1 = new PlaneListViewModel
+                if (String.IsNullOrEmpty(Date) == true)
                 {
-                    Samoloty = repository.Samoloty,
-                    Reservations = null,
-                    Name = Name,
-                    NickName = NickName,
-                    Serwis = servicesRepository.Services,
-                    ListaSamolotów = Lista,
-                    PlaneName = null
-                };
+                    TempData["message"] = "Nie wybrano terminu!";
 
-                return View(viewModel1);
+                    PlaneListViewModel viewModel3 = new PlaneListViewModel
+                    {
+                        Samoloty = null,
+                        Reservations = null,
+                        Name = Name,
+                        NickName = NickName,
+                        Serwis = null,
+                        ListaSamolotów = Lista,
+                        PlaneName = null
+                    };
+
+                    return View(viewModel3);
+                }
+
+                DateTime Dates = DateTime.ParseExact(Date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                if (Dates.Date <= DateTime.Today.Date)
+                {
+                    TempData["message"] = "Nie możesz wybrać terminu , starszego od dnia dzisiejszego!";
+                    PlaneListViewModel viewModel1 = new PlaneListViewModel
+                    {
+                        Samoloty = null,
+                        Reservations = null,
+                        Name = Name,
+                        NickName = NickName,
+                        Serwis = null,
+                        ListaSamolotów = Lista,
+                        PlaneName = null
+                    };
+                    return View(viewModel1);
+                }
+
+                else
+                {
+
+                    PlaneListViewModel viewModel1 = new PlaneListViewModel
+                    {
+                        Samoloty = repository.Samoloty,
+                        Name = Name,
+                        NickName = NickName,
+                        Serwis = servicesRepository.Services,
+                        ListaSamolotów = null,
+                        Date = Dates
+                    };
+                    return View(viewModel1);
+                }
+               
+               
             }
-            else if (String.IsNullOrWhiteSpace(PlaneName) == false)
+            else if (String.IsNullOrWhiteSpace(PlaneName) == false && String.IsNullOrWhiteSpace(Date) == false)
             {
 
+                DateTime Dates = DateTime.ParseExact(Date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                if (Dates.Date <= DateTime.Today.Date)
+                {
+                    TempData["message"] = "Nie możesz wybrać terminu , starszego od dnia dzisiejszego!";
+                    PlaneListViewModel viewModel1 = new PlaneListViewModel
+                    {
+                        Samoloty = null,
+                        Reservations = null,
+                        Name = Name,
+                        NickName = NickName,
+                        Serwis = null,
+                        ListaSamolotów = Lista,
+                        PlaneName = null
+                    };
+                    return View(viewModel1);
+                }
+                else
+                {
 
                 foreach (var samolot in repository.Samoloty)
                 {
@@ -70,13 +134,14 @@ namespace AeroKlub.UI.Controllers
                             Name = Name,
                             NickName = NickName,
                             Serwis = servicesRepository.Services,
-                            ListaSamolotów = Lista
+                            Date = Dates
                         };
-
+                       // throw new Exception(Model.ToString());
                         return View(Model);
                     }
                 }
             }
+        }
 
 
             PlaneListViewModel viewModel = new PlaneListViewModel
@@ -378,11 +443,19 @@ namespace AeroKlub.UI.Controllers
 
 
         [HttpPost]
-        public ActionResult SerchPlane(string PlaneName, string Name, string NickName)
+        public ActionResult SerchPlane(string PlaneName, string Name, string NickName , string Date)
         {
 
-            return RedirectToAction("Index", new { PlaneName = PlaneName, All = false, Name = Name, NickName = NickName });
+
+            return RedirectToAction("Index", new { PlaneName = PlaneName, All = false, Name = Name, NickName = NickName , Date = Date });
         }
+
+        [HttpPost]
+        public ActionResult SerchAllPlanes(string Date , string Name , string Nickname)
+        {
+            return RedirectToAction("Index", new { All = true, Name = Name, Nickname = Nickname, Date = Date });
+        }
+
 
 
         public ViewResult ChangeUserRole(string Name , string NickName)
@@ -468,6 +541,16 @@ namespace AeroKlub.UI.Controllers
             userRepository.DeleteUser(Name);
 
             return RedirectToAction("DeleteUser" , new { Name = AdminName, NickName = AdminNickname });
+        }
+
+        public PartialViewResult NavigationBar(string Name ,string Nickname)
+        {
+            PlaneListViewModel viewModel = new PlaneListViewModel
+            {
+                Name = Name , NickName = Nickname
+            };
+
+            return PartialView(viewModel);
         }
 
     }

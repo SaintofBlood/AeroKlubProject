@@ -112,6 +112,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\LoginScreen.jpg" />
     <Content Include="Content\NavbarStyle.css" />
     <Content Include="css\bootstrap-datetimepicker.css" />
     <Content Include="css\bootstrap-datetimepicker.min.css" />
@@ -325,6 +326,10 @@
     <Content Include="Views\Login\NoPermission.cshtml" />
     <Content Include="Views\Admin\AddManuallyUser.cshtml" />
     <Content Include="Views\Admin\DeleteUser.cshtml" />
+    <Content Include="Views\User\ReservationHistory.cshtml" />
+    <Content Include="Views\User\NavigationBar.cshtml" />
+    <Content Include="Views\Admin\NavigationBar.cshtml" />
+    <Content Include="Views\Mechanic\NavigationBar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
