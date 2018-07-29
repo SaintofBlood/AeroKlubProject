@@ -1,29 +1,30 @@
 # AeroKlubProject
 
-Jest to projekt systemu do zarządzania przykładowym aeroklubem. 
-Jest to projekt ASP.NET MVC.
-Biblioteka użyta do ostylowania to Bootstrap ver.4
+This is a system project for managing an example aeroclub.
+- Made using ASP.NET MVC.
+- The library used for styling is Bootstrap ver.4
+- Project is using NoUiSlider , wNumb and bootstrap-datepicker.
 
-## Aktualne funkcje:
+## Working functions:
 
- - Rezerwowanie lotów
- - Funkcje wykrywające brak możliwości rezerwacji
- - Dodawanie i usuwanie:  samolotów , rezerwacji , mechaników jak i przeglądów samolotów
- - Tworzenie użytkownika 
- - Panel logowania 
- - Szyfrowanie haseł użytkowników
- - Wyświetlanie historii lotów
+ - Booking flights
+ - Functions detecting the lack of reservation
+ - Adding and removing: aircraft, reservations, mechanics and aircraft inspections
+ - User creation
+ - Login panel
+ - Encryption of user passwords
+ - Displaying flight history
  
 
-## Baza danych
-Tworzymy ją poprzez Eksplorator serwera , lokalnie. Powinna zawierać odpowiednie tabele:
+## Database
+We create it through the server explorer, locally. It should contain the appropriate tables:
 
 - Reservations
 - Samolots
 - Services
 - Users
 
-O następujących kodach :
+The following codes:
 
 #### Reservations
 
@@ -85,8 +86,7 @@ CREATE TABLE [dbo].[Users] (
 
 
 
-Przykładowe dane do tabel:
-
+Sample data for tables:
 
 
 
@@ -139,21 +139,21 @@ INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email
 INSERT INTO [dbo].[Users] ([Id], [Username], [Name], [Password], [VCode], [Email], [Role], [CreationDate]) VALUES (40, N'user1', N'Janek_Kowalski', N'E6-81-0A-C3-CD-9A-AD-58-30-5E-FB-0A-20-72-C3-93', N'8W9W5Efygc', N'JanekKowalski@gmail.com', N'User', N'13.07.2018')
 SET IDENTITY_INSERT [dbo].[Users] OFF
 ```
-## WAŻNE
+## VERY IMPORTANT!
 
-Jeżeli baza danych użytkowników nie będzie działać , to trzeba ręcznie dodać 3 użytkowników z poziomu loginu , po czym jednemu nadać Role = "Admin". Rolę mechanica możemy dodać  z Panelu Administratora.
+If the user database will not work (data), you have to manually add 3 users from the login level, after which one should give Role = "Admin" and then , thru admin panel we can add a mechanic role .
 
-Po dodaniu danych , kopujemy connectionstring , i podmieniamy go , w pliku Web.config , w miejscu :
+After adding the data, we copy connectionstring, and replace it in the Web.config file, in the place:
 
    ``` <add name="EFDbContext"  connectionString="Here" /> ```
 
-### Konta do logowania , zaimplementowane od razu w projekcie
+### Login accounts implemented immediately in the project with database
 
-Aktualne konta :
+Current accounts:
 ```
 L:P
-user:user - Rola użytkownika;
-mechanic:mechanic - Rola mechanica;
-admin:admin - Rola administratora;
-user1:user1 - Rola użytkownika
+user: user - User role;
+mechanic: mechanic - The role of mechanics;
+admin: admin - Admin role;
+user1: user1 - User role
 ```
