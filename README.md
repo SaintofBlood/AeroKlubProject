@@ -150,8 +150,10 @@ Po dodaniu danych , kopujemy connectionstring , i podmieniamy go , w pliku Web.c
 ### Konta do logowania , zaimplementowane od razu w projekcie
 
 Aktualne konta :
+```
 L:P
 user:user - Rola użytkownika;
 mechanic:mechanic - Rola mechanica;
 admin:admin - Rola administratora;
 user1:user1 - Rola użytkownika
+```
