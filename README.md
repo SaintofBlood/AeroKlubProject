@@ -17,7 +17,8 @@ O następujących kodach :
 - Reservations
 
 
- ` CREATE TABLE [dbo].[Reservations] (
+ ```
+ CREATE TABLE [dbo].[Reservations] (
     [ReservationID] INT           IDENTITY (1, 1) NOT NULL,
     [PlaneName]     NVARCHAR (50) NOT NULL,
     [Date]          NVARCHAR (10) NOT NULL,
@@ -25,7 +26,9 @@ O następujących kodach :
     [To]            INT           NOT NULL,
     [By]            NVARCHAR (50) NULL,
     CONSTRAINT [PK_Reservations] PRIMARY KEY CLUSTERED ([ReservationID] ASC)
-); ` 
+); 
+
+```
 
 - Samolots
 
