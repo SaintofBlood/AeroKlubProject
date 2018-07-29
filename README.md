@@ -25,7 +25,7 @@ Tworzymy ją poprzez Eksplorator serwera , lokalnie. Powinna zawierać odpowiedn
 
 O następujących kodach :
 
-- Reservations
+#### Reservations
 
 
  ```
@@ -40,7 +40,7 @@ O następujących kodach :
 ); 
 ```
 
-- Samolots
+#### Samolots
 
 
 ```
@@ -52,7 +52,7 @@ CREATE TABLE [dbo].[Samolots] (
 );
 ```
 
-- Services
+#### Services
 
 
 ```
@@ -65,7 +65,7 @@ CREATE TABLE [dbo].[Services] (
 );
 ```
 
-- Users
+#### Users
 
 
 ```
@@ -85,7 +85,7 @@ CREATE TABLE [dbo].[Users] (
 
 Przykładowe dane do tabel:
 
-- Reservations
+#### Reservations
 
 
 ```
@@ -99,7 +99,7 @@ INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], 
 INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], [To], [By]) VALUES (3215, N'Cessna_142', N'09.07.2018', 2, 18, N'Michał_Kochanowicz')
 SET IDENTITY_INSERT [dbo].[Reservations] OFF
 ```
-- Samolots
+#### Samolots
 
 
 ```
@@ -110,7 +110,7 @@ INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (31,
 INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (32, N'Cessna_221', 521)
 SET IDENTITY_INSERT [dbo].[Samolots] OFF
 ```
-- Services
+#### Services
 
 
 ```
@@ -123,7 +123,7 @@ INSERT INTO [dbo].[Services] ([Id], [Samolot], [Data], [By]) VALUES (28, N'Cessn
 INSERT INTO [dbo].[Services] ([Id], [Samolot], [Data], [By]) VALUES (29, N'Cessna_221', N'12.07.2018', N'Adam_Sachulski')
 SET IDENTITY_INSERT [dbo].[Services] OFF
 ```
-- Users
+#### Users
 
 
 ```
