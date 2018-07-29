@@ -1,6 +1,6 @@
 # AeroKlubProject
 
-Jest to projekt systemu do zarządzania aeroklubem. 
+Jest to projekt systemu do zarządzania przykładowym aeroklubem. 
 Jest to projekt ASP.NET MVC.
 Biblioteka użyta do ostylowania to Bootstrap ver.4
 
