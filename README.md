@@ -112,10 +112,6 @@ Po dodaniu danych , kopujemy connectionstring , i podmieniamy go , w pliku Web.c
 
 ----------------------------------------------------------------------------------------------------------------------------------------
 
-Strona internetowa , działającego projektu : 
-
-http://aeroklub.azurewebsites.net/
-
 Aktualne konta :
 L:P
 user:user - Rola użytkownika;
