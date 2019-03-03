@@ -13,8 +13,6 @@
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
 	<link href="~/Content/NavbarStyle.css" rel="stylesheet" />
-
-
 	<style>
 		.bootbox .modal-header {
 			display: block;
@@ -74,15 +72,15 @@
 			<tbody>
 				@foreach (var rezerwacja in Model.Reservations)
 				{
-					<tr>
-						<td>@rezerwacja.ReservationID</td>
-						<td>@rezerwacja.PlaneName</td>
-						<td> @rezerwacja.Date</td>
-						<td> @rezerwacja.From</td>
-						<td>   @rezerwacja.To</td>
-						<td>@rezerwacja.By</td>
-						<td>@Html.ActionLink("Usuń", "DeleteReservation", "Reservation", new { ReservationID = rezerwacja.ReservationID, Name = Model.Name, Nickname = Model.NickName }, null)</td>
-					</tr>
+				<tr>
+					<td>@rezerwacja.ReservationID</td>
+					<td>@rezerwacja.PlaneName</td>
+					<td> @rezerwacja.Date</td>
+					<td> @rezerwacja.From</td>
+					<td>   @rezerwacja.To</td>
+					<td>@rezerwacja.By</td>
+					<td>@Html.ActionLink("Usuń", "DeleteReservation", "Reservation", new { ReservationID = rezerwacja.ReservationID, Name = Model.Name, Nickname = Model.NickName }, new { style = "background-image=url('~/Content/Images/DeleteIcon.png')" })</td>
+				</tr>
 				}
 			</tbody>
 		</table>

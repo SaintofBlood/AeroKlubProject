@@ -17,17 +17,89 @@
 	<link href="~/Content/NavbarStyle.css" rel="stylesheet" />
 
 	<style>
-		.col-centered {
-			margin: 0 auto;
-			float: none;
+
+		form {
+			width: 60%;
+			margin: 60px auto;
+			background: #d47f5570;
+			padding: 60px 120px 80px 120px;
+			text-align: center;
+			-webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+			box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
 		}
 
-		.inline{
-			display:inline;
+		label {
+			display: block;
+			position: relative;
+			margin: 40px 0px;
 		}
+
+		.input {
+			width: 100%;
+			padding: 10px;
+			background: transparent;
+			border: none;
+			outline: none;
+		}
+
+		.line-box {
+			position: relative;
+			width: 100%;
+			height: 2px;
+			background: #000000;
+		}
+
+		.line {
+			position: absolute;
+			width: 0%;
+			height: 2px;
+			top: 0px;
+			left: 50%;
+			transform: translateX(-50%);
+			background: #c19223;
+			transition: ease .6s;
+		}
+
+		.input:focus + .line-box .line {
+			width: 100%;
+		}
+
+		.label-txt {
+			position: absolute;
+			top: -1.6em;
+			padding: 10px;
+			font-family: sans-serif;
+			font-size: .8em;
+			letter-spacing: 1px;
+			color: #000000;
+			transition: ease .3s;
+		}
+
+		.label-active {
+			top: -3em;
+		}
+
+		button {
+			display: inline-block;
+			padding: 12px 24px;
+			background: rgb(220,220,220);
+			font-weight: bold;
+			color: rgb(120,120,120);
+			border: none;
+			outline: none;
+			border-radius: 3px;
+			cursor: pointer;
+			transition: ease .3s;
+		}
+
+			button:hover {
+				background: #8BC34A;
+				color: #ffffff;
+			}
+
 	</style>
 </head>
-<body>
+<body style="background-image: url('../../Content/Images/pexels-photo-1465904.jpg');">
 
 	@if (TempData["LoginErrorMessage"] != null)
 	{
@@ -47,39 +119,37 @@
 
 		<div class="container-fluid text-center">
 
-			<div class="card">
-				<div class="card-header">Registration</div>
-				<div class="card-body">
-				@using (Html.BeginForm("AddAccountToRepository", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
-				{
-					<div class="form-group">
-						<label for="Name" class="col-md-4 col-form-label text-md-right" style="float:left">Login :</label>
-						<div style="padding-top:10px ; padding-bottom:10px;">@Html.TextBox("Name", null, new { @class = "form-control", @style = "width:200px;padding-left:10px;" })</div>
-					</div>
-					<div class="form-group row justify-content-center">
-						<label for="text" class="col-0 col-form-label">Imię:  </label>
-						<div style="padding-top:10px ; padding-bottom:10px;">@Html.TextBox("FirstName", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-					</div>
-					<div class="form-group row justify-content-center">
-						<label for="text" class="col-0 col-form-label">Nazwisko:  </label>
-						<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline"></p>@Html.TextBox("Lastname", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-					</div>
-					<div class="form-group row justify-content-center">
-						<label for="text" class="col-0 col-form-label">Login :</label>
-						<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Hasło:  </p>@Html.Password("paswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-					</div>
-					<div class="form-group row">
-						<label for="text" class="col-4 col-form-label">Login :</label>
-						<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Powtórz hasło:  </p>@Html.Password("secondpaswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-					</div>
-					<div class="form-group row">
-						<label for="text" class="col-4 col-form-label">Login :</label>
-						<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">E-Mail:  </p>@Html.TextBox("email", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-					</div>
-					<input type="submit" value="Dodaj konto" class="btn btn-danger" style="margin-top:10px" />
-				}
-				</div>
-			</div>
+			@using (Html.BeginForm("AddAccountToRepository", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			{
+				<img src="~/Content/Images/Logo.png" style="width:60%" />
+
+				<label>
+					<p class="label-txt">Login:</p>@Html.TextBox("Name", null, new { @class = "input" })<div class="line-box"><div class="line"></div> </div>
+				</label>
+
+				<label>
+					<p class="label-txt">Imię:</p>@Html.TextBox("FirstName", null, new { @class = "input" })<div class="line-box"><div class="line"></div> </div>
+				</label>
+
+				<label>
+					<p class="label-txt">Nazwisko:</p>@Html.TextBox("LastName", null, new { @class = "input" })<div class="line-box"><div class="line"></div> </div>
+				</label>
+
+				<label>
+					<p class="label-txt">Hasło:</p>@Html.TextBox("paswd", null, new { @class = "input", @type = "password" })<div class="line-box"><div class="line"></div> </div>
+				</label>
+
+				<label>
+					<p class="label-txt">Powtórz hasło:</p>@Html.TextBox("secondpaswd", null, new { @class = "input", @type = "password" })<div class="line-box"><div class="line"></div> </div>
+				</label>
+
+				<label>
+					<p class="label-txt">E-mail:</p>@Html.TextBox("email", null, new { @class = "input" })<div class="line-box"><div class="line"></div> </div>
+				</label>
+
+				<input type="submit" value="Dodaj konto" class="btn btn-danger" style="margin-top:10px" />
+			}
+
 		</div>
 </body>
 </html>

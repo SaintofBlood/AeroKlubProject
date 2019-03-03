@@ -16,6 +16,7 @@
 
 	<title>Logowanie</title>
 	<style>
+
 		.field-validation-error {
 			color: #f00;
 		}
@@ -43,10 +44,18 @@
 		ul {
 			list-style-type: none;
 		}
+
+		.modal-header{
+			display:inline;
+		}
+
+		.form-control {
+			background-color: #ffffff73;
+		}
 	</style>
 </head>
-<body>
-
+<body style="background-image: url('../../Content/Images/pexels-photo-1465904.jpg');background-repeat: no-repeat; background-size:cover">
+	
 	@if (TempData["LoginErrorMessage"] != null)
 	{
 		<script src="~/Scripts/bootbox.min.js"></script>
@@ -64,8 +73,8 @@
 	}
 
 	<div class="container-fluid">
-		<div style="margin:auto ; width:540px; padding: 8% 0px 0px 0px" class="text-center">
-			<h1 style="text-align:center; font-size:4.5rem; padding: 0 0 3% 0">AeroKlub</h1>
+		<div style="margin:auto ; width:540px; padding: 3% 0px 0px 0px" class="text-center">
+			<img src="~/Content/Images/Logo.png" style="width:100%" />
 			@using (Html.BeginForm())
 			{
 
@@ -75,18 +84,18 @@
 				<div class="form-group">
 					@Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Hasło" })
 				</div>
-				<input type="submit" value="Zaloguj się" class="btn btn-outline-success" align="right" style=" width:35%" />
+				<input type="submit" value="Zaloguj się" class="btn btn-outline-success" align="right" style=" width:35%; font-weight:bold;" />
 			}
 		</div>
-		@Html.ValidationSummary()
-		@if (string.IsNullOrWhiteSpace(ViewBag.Message) != true)
-		{
-			<div class="validation-summary-errors">@ViewBag.Message</div>
-		}
+	<div style="padding-top:1%" class="text-center">
+		@Html.ActionLink("Nie posiadasz konta?", "AddAccount", null, new { @class = "btn btn-outline-warning", @style = "font-weight:bold;" })
 	</div>
 
-	<div style="padding-top:1%" class="text-center">
-		@Html.ActionLink("Nie posiadasz konta?", "AddAccount", null , new { @class = "btn btn-outline-warning" })
+	@Html.ValidationSummary()
+	@if (string.IsNullOrWhiteSpace(ViewBag.Message) != true)
+	{
+		<div class="validation-summary-errors">@ViewBag.Message</div>
+	}
 	</div>
 </body>
 </html>

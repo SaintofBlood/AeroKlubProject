@@ -55,13 +55,14 @@ namespace AeroKlub.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult RezerwacjaNaNaprawe(string PlaneName , string Date , string Name, string NickName)
+        public ActionResult RezerwacjaNaNaprawe(string PlaneName , string Date  , string WhyIsServiced , string Name, string NickName)
         {
                 Service dbEntry = new Service();
                 dbEntry.Samolot = PlaneName;
                 dbEntry.Data = Date;
                 dbEntry.By = Name;
                 dbEntry.Id = 0;
+                dbEntry.WhyIsServiced = WhyIsServiced;
                 List<string> output = new List<string>();
                 foreach (var samolot in repository.Samoloty)
                 {

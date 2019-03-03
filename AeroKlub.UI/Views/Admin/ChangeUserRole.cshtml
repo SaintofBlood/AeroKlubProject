@@ -11,10 +11,18 @@
 	<meta name="viewport" content="width=device-width" />
 	<title>Zmień uprawnienia użytkownika</title>
 
+
+	<script src="~/Scripts/umd/popper.js"></script>
+
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
 	<link href="~/Content/NavbarStyle.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/css/bootstrap-select.min.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/js/bootstrap-select.min.js"></script>
+
 
 	<style>
 		.col-centered {
@@ -35,7 +43,7 @@
 		{
 			using (Html.BeginForm("ChangeUserRole", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 			{
-				@Html.DropDownList("Name", Model.UserList, new { @class = "form-control col-centered", @style = "width:300px" });
+				@Html.DropDownList("Name", Model.UserList, new { @class = "selectpicker", @style = "width:20%", @data_live_search = "true" })
 				@Html.TextArea("AdminName", Model.Name, new { @readonly = true, style = "display:none" })
 				@Html.TextArea("AdminNickname", Model.NickName, new { @readonly = true, style = "display:none" })
 				<div style="padding-top:2%">

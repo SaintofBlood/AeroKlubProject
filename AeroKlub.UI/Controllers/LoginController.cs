@@ -93,10 +93,11 @@ namespace AeroKlub.UI.Controllers
                 }
               
             }
-                
-                ViewBag.Message = "Błędny login lub hasło!";
-           // }
-  
+            
+            TempData["LoginErrorMessage"] = "Błędny login lub hasło!";
+
+            // }
+
 
             return View();
 

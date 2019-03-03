@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="EFDbContext-Web.config Connection String" description="EFDbContext Parametry połączenia używane w pliku web.config przez aplikację w celu uzyskiwania dostępu do bazy danych." defaultValue="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=AeroKlub;Integrated Security=True;MultipleActiveResultSets=True" tags="SqlConnectionString">
+  <parameter name="EFDbContext-Web.config Connection String" description="EFDbContext Parametry połączenia używane w pliku web.config przez aplikację w celu uzyskiwania dostępu do bazy danych." defaultValue="Data Source=mssql6.webio.pl,2401;Initial Catalog=admin23_DataBase;Integrated Security=False;User ID=admin23_administrator;Password=Michal_2010;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;MultipleActiveResultSets=True;" tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\SaintofBlood\\Desktop\\AeroKlubWeb\\AeroKlub\.UI\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='EFDbContext']/@connectionString" />
   </parameter>
 </parameters>

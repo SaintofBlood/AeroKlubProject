@@ -51,6 +51,8 @@ namespace AeroKlub.UI
 
             routes.MapRoute(null, "{controller}/{action}");
 
+            routes.MapRoute(null, "Test", new {controller = "Login" ,  action = "Test" });
+
         }
     }
 }

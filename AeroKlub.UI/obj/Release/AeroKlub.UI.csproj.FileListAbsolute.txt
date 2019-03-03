@@ -1,3 +1,11 @@
+C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.IO.Compression.dll
+C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\VBCSCompiler.exe
+C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\obj\Release\AeroKlub.UI.csprojAssemblyReference.cache
+C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\obj\Release\AeroKlub.UI.csproj.CoreCompileInputs.cache
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\AeroKlub.UI.dll.config
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\AeroKlub.UI.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\AeroKlub.UI.pdb
@@ -8,13 +16,9 @@ C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\csi.exe
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\csi.exe.config
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\csi.rsp
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\Microsoft.Win32.Primitives.dll
@@ -24,7 +28,6 @@ C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.Console.
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.Diagnostics.Process.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.IO.Compression.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.IO.FileSystem.Primitives.dll
@@ -47,7 +50,6 @@ C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\System.Xml.XPat
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\vbc.exe
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\vbc.exe.config
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\vbc.rsp
-C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\VBCSCompiler.exe
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\AreoKlub.Domain.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\EntityFramework.dll
@@ -89,8 +91,6 @@ C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\pl\System.Web.Webpages
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\pl\System.Web.Webpages.Razor.resources.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\pl\System.Web.Helpers.resources.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\bin\pl\System.Web.Mvc.resources.dll
-C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\obj\Release\AeroKlub.UI.csprojAssemblyReference.cache
-C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\obj\Release\AeroKlub.UI.csproj.CoreCompileInputs.cache
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\obj\Release\AeroKlub.UI.csproj.CopyComplete
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\obj\Release\AeroKlub.UI.dll
 C:\Users\SaintofBlood\Desktop\AeroKlubWeb\AeroKlub.UI\obj\Release\AeroKlub.UI.pdb

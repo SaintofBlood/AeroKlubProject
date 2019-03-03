@@ -13,6 +13,9 @@
 
 	<title>Strona główna</title>
 
+	<script src="~/Scripts/umd/popper.js"></script>
+
+
 	<link href="~/css/nouislider.css" rel="stylesheet" />
 	<script src="~/Scripts/nouislider.js"></script>
 	<link href="~/css/nouislider.min.css" rel="stylesheet" />
@@ -22,6 +25,15 @@
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 	<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
+
+
+	<link href="~/css/bootstrap-datepicker.css" rel="stylesheet" />
+	<script src="~/Scripts/bootstrap-datepicker.js"></script>
+	<script src="~/locales/bootstrap-datepicker.pl.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/css/bootstrap-select.min.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/js/bootstrap-select.min.js"></script>
 
 	<style>
 		table, th, td {
@@ -53,6 +65,7 @@
 			margin: 0 auto;
 			float: none;
 		}
+
 		.noUi-handle {
 			outline: none;
 		}
@@ -78,23 +91,8 @@
 
 	}
 
-	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand">Areo Klub</a>
+	@Html.Action("NavigationBar" , "User" , new { Name = Model.Name , Nickname = Model.NickName })
 
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					@Html.ActionLink("Home", "Index", "User", new { Name = Model.Name, NickName = Model.NickName }, new { @class = "nav-link" })
-				</li>
-				<li class="nav-item">
-					@Html.ActionLink("Twoje rezerwacje", "GetHisReservations", "User", new { Name = Model.Name, NickName = Model.NickName }, new { @class = "nav-link" })
-				</li>
-				<li class="nav-item">
-					@Html.ActionLink("Wyloguj", "Login", "Login", new { Clear = true }, new { @class = "nav-link" })
-				</li>
-			</ul>
-		</div>
-	</nav>
 	<div class="container-fluid text-center">
 
 		@if (Model.Samoloty == null && Model.PlaneName == null)
@@ -104,17 +102,67 @@
 			{
 				<h3 style="padding-bottom:1%;">Wybierz odpowiedni samolot , dla którego chcesz wykonać rezerwacje: </h3>
 
-				@Html.DropDownList("PlaneName", Model.ListaSamolotów, new { @class = "form-control col-centered", @style = "width:20%" })
+				@Html.DropDownList("PlaneName", Model.ListaSamolotów, new { @class = "selectpicker", @style = "width:20%", @data_live_search = "true" })
+
 				@Html.TextBox("Name", Model.Name, new { @readonly = true, @style = "display:none" })
 				@Html.TextBox("NickName", Model.NickName, new { @readonly = true, @style = "display:none" })
+
+
+
+				<div style="padding-top:1%;padding-bottom:1%">
+					<p>Wybierz datę:</p>
+					<input id="Date" name="Date" autocomplete="off" class="form-control" style="width: auto;float: none;margin: auto;text-align:center;">
+				</div>
+
+				<h3 style="padding-bottom:1%;"></h3>
+
+				@Html.TextBox("DataOstateczna", "", new { @id = "DataToOnePlane", @readonly = true, @style = "display:none" })
 
 				<input type="submit" value="Szukaj" class="btn btn-info" style="margin-top:2%" />
 
 			}
 
-			<div style="padding-top: 1%">
-				@Html.ActionLink("Wyświetl wszystko", "Index", new { all = true, Name = Model.Name, NickName = Model.NickName }, new { @class = "btn btn-primary" })
-			</div>
+			<script type="text/javascript">
+				$('#Date').datepicker({
+					format: "dd.mm.yyyy",
+					weekStart: 1,
+					autoclose: true,
+					todayHighlight: true,
+					language: 'pl',
+					orientation: "bottom"
+				});
+
+			</script>
+
+
+			using (Html.BeginForm("SerchAllPlanes", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+			{
+
+				@Html.TextBox("Name", Model.Name, new { @readonly = true, @style = "display:none" })
+				@Html.TextBox("NickName", Model.NickName, new { @readonly = true, @style = "display:none" })
+
+
+				@Html.TextBox("Date", "", new { @id = "DataToAllPlane", @readonly = true, @style = "display:none" })
+
+
+				<input type="submit" value="Pokaż wszystkie samoloty" class="btn btn-info" style="margin-top:1%" />
+
+			}
+
+
+			<script>
+				$('#Date').datepicker()
+					.on("changeDate", function (e) {
+
+						var input1 = document.getElementById("DataToOnePlane");
+						var input2 = document.getElementById("DataToAllPlane");
+						input1.value = e.format('dd.mm.yyyy');
+						input2.value = e.format('dd.mm.yyyy');
+
+					});
+
+				$('.PlaneName').selectpicker();
+			</script>
 
 
 		}
@@ -130,7 +178,7 @@
 						@for (int i = 0; i <= 6; i++)
 						{
 							<th>
-								@DateTime.Now.AddDays(i).ToShortDateString()
+								@Model.Date.AddDays(i).ToShortDateString()
 							</th>
 						}
 					</tr>
@@ -148,7 +196,7 @@
 
 							foreach (var service in Model.Serwis)
 							{
-								if (Model.PlaneName == service.Samolot && DateTime.ParseExact(service.Data, "dd.MM.yyyy", CultureInfo.InvariantCulture) == DateTime.Now.Date.AddDays(i))
+								if (Model.PlaneName == service.Samolot && DateTime.ParseExact(service.Data, "dd.MM.yyyy", CultureInfo.InvariantCulture) == Model.Date.Date.AddDays(i))
 								{
 									isService = true;
 								}
@@ -158,8 +206,8 @@
 							<td class="align-middle">
 								@if (isService == false)
 								{
-									@Html.Action("Rezerwacja", "Reservation", new { PlaneName = Model.PlaneName, Date = DateTime.Now.AddDays(i).ToShortDateString(), Name = Model.Name, Number = z, By = Model.Name, NickName = Model.NickName , All = false})
-									@Html.Action("GetReservation", new { name = Model.PlaneName, data = DateTime.Now.AddDays(i).ToShortDateString(), username = Model.Name })
+									@Html.Action("Rezerwacja", "Reservation", new { PlaneName = Model.PlaneName, Date = Model.Date.AddDays(i).ToShortDateString(), Name = Model.Name, Number = z, By = Model.Name, NickName = Model.NickName, All = false })
+									@Html.Action("GetReservation", new { name = Model.PlaneName, data = Model.Date.AddDays(i).ToShortDateString(), username = Model.Name })
 								}
 								else
 								{
@@ -175,7 +223,7 @@
 
 			<div class="text-center" style="padding-top:1%">
 				<div>
-					@Html.ActionLink("Wyświetl wszystko", "Index", new { all = true, Name = Model.Name, NickName = Model.NickName }, new { @class = "btn btn-primary" })
+					@Html.ActionLink("Wyświetl wszystko", "Index", new { all = true, Name = Model.Name, NickName = Model.NickName , Date = Model.Date.ToShortDateString().Replace('/', '.') }, new { @class = "btn btn-primary" })
 				</div>
 				<div style="padding-top:1%">
 					@Html.ActionLink("Znajdz samolot", "Index", new { all = false, Name = Model.Name, NickName = Model.NickName }, new { @class = "btn btn-primary" })
@@ -194,9 +242,9 @@
 						</th>
 						@for (int i = 0; i <= 6; i++)
 						{
-							<th>
-								@DateTime.Now.AddDays(i).ToShortDateString()
-							</th>
+						<th>
+							@Model.Date.AddDays(i).ToShortDateString()
+						</th>
 						}
 					</tr>
 				</thead>
@@ -216,7 +264,7 @@
 
 								foreach (var service in Model.Serwis)
 								{
-									if (Samolot.Nazwa == service.Samolot && DateTime.ParseExact(service.Data, "dd.MM.yyyy", CultureInfo.InvariantCulture) == DateTime.Now.Date.AddDays(i))
+									if (Samolot.Nazwa == service.Samolot && DateTime.ParseExact(service.Data, "dd.MM.yyyy", CultureInfo.InvariantCulture) == Model.Date.Date.AddDays(i))
 									{
 										isService = true;
 									}
@@ -226,8 +274,8 @@
 								<td class="align-middle">
 									@if (isService == false)
 									{
-										@Html.Action("Rezerwacja", "Reservation", new { PlaneName = Samolot.Nazwa, Date = DateTime.Now.AddDays(i).ToShortDateString(), Name = Model.Name, Number = z, By = Model.Name, NickName = Model.NickName , All = true })
-										@Html.Action("GetReservation", new { name = Samolot.Nazwa, data = DateTime.Now.AddDays(i).ToShortDateString(), username = Model.Name })
+										@Html.Action("Rezerwacja", "Reservation", new { PlaneName = Samolot.Nazwa, Date = Model.Date.AddDays(i).ToShortDateString(), Name = Model.Name, Number = z, By = Model.Name, NickName = Model.NickName, All = true })
+										@Html.Action("GetReservation", new { name = Samolot.Nazwa, data = Model.Date.AddDays(i).ToShortDateString(), username = Model.Name })
 									}
 									else
 									{

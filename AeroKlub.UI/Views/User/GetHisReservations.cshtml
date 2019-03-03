@@ -48,7 +48,7 @@
 			<tbody>
 				@foreach (var reservation in Model.Reservations)
 				{
-					if (reservation.By == Model.Name && DateTime.ParseExact(reservation.Date, "dd.MM.yyyy", CultureInfo.InvariantCulture) >= DateTime.Today)
+					if (reservation.By == Model.Name && DateTime.ParseExact(reservation.Date, "yyyy-MM-dd", null) >= DateTime.Today)
 					{
 						<tr>
 							<td>

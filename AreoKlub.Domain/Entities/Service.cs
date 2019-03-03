@@ -15,5 +15,6 @@ namespace AreoKlub.Domain.Entities
         public string Samolot { get; set; }
         public string Data { get; set; }
         public string By { get; set; }
+        public string WhyIsServiced { get; set; }
     }
 }

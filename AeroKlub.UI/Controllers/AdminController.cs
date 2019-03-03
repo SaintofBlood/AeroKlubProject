@@ -4,6 +4,7 @@ using AreoKlub.Domain.Entities;
 using AreoKlub.Domain.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -31,9 +32,6 @@ namespace AeroKlub.UI.Controllers
         public ViewResult Index(string Name, string NickName, string PlaneName, bool? All , string Date)
         {
 
-           
-           
-
             List<string> output = new List<string>();
             foreach (var samolot in repository.Samoloty)
             {
@@ -42,12 +40,18 @@ namespace AeroKlub.UI.Controllers
             SelectList Lista = new SelectList(output);
 
 
-            
+            DateTime Dates = new DateTime();
+
+            if (DateTime.TryParseExact(Date, "dd.MM.yyyy", null, DateTimeStyles.None, out Dates) == false)
+                DateTime.TryParseExact(Date, "yyyy-MM-dd", null, DateTimeStyles.None, out Dates);
+            else
+                DateTime.TryParseExact(Date, "dd.MM.yyyy", null, DateTimeStyles.None, out Dates);
+
 
             if (All == true)
             {
 
-                if (String.IsNullOrEmpty(Date) == true)
+                if (String.IsNullOrWhiteSpace(Date))
                 {
                     TempData["message"] = "Nie wybrano terminu!";
 
@@ -65,7 +69,9 @@ namespace AeroKlub.UI.Controllers
                     return View(viewModel3);
                 }
 
-                DateTime Dates = DateTime.ParseExact(Date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                // DateTime Dates = DateTime.ParseExact(Date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                
 
                 if (Dates.Date <= DateTime.Today.Date)
                 {
@@ -102,8 +108,6 @@ namespace AeroKlub.UI.Controllers
             }
             else if (String.IsNullOrWhiteSpace(PlaneName) == false && String.IsNullOrWhiteSpace(Date) == false)
             {
-
-                DateTime Dates = DateTime.ParseExact(Date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
                 if (Dates.Date <= DateTime.Today.Date)
                 {
@@ -142,7 +146,6 @@ namespace AeroKlub.UI.Controllers
                 }
             }
         }
-
 
             PlaneListViewModel viewModel = new PlaneListViewModel
             {
@@ -212,7 +215,8 @@ namespace AeroKlub.UI.Controllers
                 Samoloty = repository.Samoloty,
                 Serwis = servicesRepository.Services,
                 Name = Name,
-                NickName = Nickname
+                NickName = Nickname,
+               
             };
 
             return View(viewModel);
@@ -383,7 +387,11 @@ namespace AeroKlub.UI.Controllers
 
             foreach (var service in servicesRepository.Services)
             {
-                output.Add(service.Samolot + " " + service.Data + " " + service.By);
+                DateTime res;
+                DateTime.TryParse(service.Data, out res);
+
+                if (res >= DateTime.Now)
+                    output.Add(service.Samolot + " " + service.Data + " " + service.By);
             }
 
             SelectList serviceList = new SelectList(output);

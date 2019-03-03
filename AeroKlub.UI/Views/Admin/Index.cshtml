@@ -13,6 +13,10 @@
 
 	<title>Strona główna</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<script src="~/Scripts/umd/popper.js"></script>
+
 	<link href="~/css/nouislider.css" rel="stylesheet" />
 	<script src="~/Scripts/nouislider.js"></script>
 	<link href="~/css/nouislider.min.css" rel="stylesheet" />
@@ -26,6 +30,12 @@
 	<link href="~/css/bootstrap-datepicker.css" rel="stylesheet" />
 	<script src="~/Scripts/bootstrap-datepicker.js"></script>
 	<script src="~/locales/bootstrap-datepicker.pl.min.js"></script>
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/css/bootstrap-select.min.css">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.5/js/bootstrap-select.min.js"></script>
+
 
 	<style>
 		table, th, td {
@@ -84,7 +94,7 @@
 			{
 				<h3 style="padding-bottom:1%;">Wybierz odpowiedni samolot , dla którego chcesz wykonać rezerwacje: </h3>
 
-				@Html.DropDownList("PlaneName", Model.ListaSamolotów, new { @class = "form-control col-centered", @style = "width:20%" })
+				@Html.DropDownList("PlaneName", Model.ListaSamolotów, new { @class = "selectpicker", @style = "width:20%" })
 
 				<div style="padding-top:1%;padding-bottom:1%">
 					<p>Wybierz datę:</p>

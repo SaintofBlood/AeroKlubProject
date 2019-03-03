@@ -2,6 +2,7 @@
 using AreoKlub.Domain.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -30,6 +31,12 @@ namespace AeroKlub.UI.Controllers
         {
 
 
+            DateTime Dates = new DateTime();
+
+            if (DateTime.TryParseExact(Date, "dd.MM.yyyy", null, DateTimeStyles.None, out Dates) == false)
+                DateTime.TryParseExact(Date, "yyyy-MM-dd", null, DateTimeStyles.None, out Dates);
+            else
+                DateTime.TryParseExact(Date, "dd.MM.yyyy", null, DateTimeStyles.None, out Dates);
 
 
             List<string> output = new List<string>();
@@ -62,8 +69,6 @@ namespace AeroKlub.UI.Controllers
 
                     return View(viewModel3);
                 }
-
-                DateTime Dates = DateTime.ParseExact(Date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
                 if (Dates.Date <= DateTime.Today.Date)
                 {
@@ -100,8 +105,6 @@ namespace AeroKlub.UI.Controllers
             }
             else if (String.IsNullOrWhiteSpace(PlaneName) == false && String.IsNullOrWhiteSpace(Date) == false)
             {
-
-                DateTime Dates = DateTime.ParseExact(Date, "dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
                 if (Dates.Date <= DateTime.Today.Date)
                 {
