@@ -20,7 +20,7 @@ This is a system project for managing an example aeroclub.
 We create it through the server explorer, locally. It should contain the appropriate tables:
 
 - Reservations
-- Samolots
+- Planes
 - Services
 - Users
 
@@ -41,11 +41,11 @@ The following codes:
 ); 
 ```
 
-#### Samolots
+#### Planes
 
 
 ```
-CREATE TABLE [dbo].[Samolots] (
+CREATE TABLE [dbo].[Planes] (
     [PlaneID]         INT            IDENTITY (1, 1) NOT NULL,
     [Nazwa]           NVARCHAR (MAX) NULL,
     [WylataneGodziny] INT            NULL,
@@ -104,16 +104,16 @@ INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], 
 INSERT INTO [dbo].[Reservations] ([ReservationID], [PlaneName], [Date], [From], [To], [By]) VALUES (3215, N'Cessna_142', N'09.07.2018', 2, 18, N'Michał_Kochanowicz')
 SET IDENTITY_INSERT [dbo].[Reservations] OFF
 ```
-#### Samolots
+#### Planes
 
 
 ```
-SET IDENTITY_INSERT [dbo].[Samolots] ON
-INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (29, N'Cessna_150', 6652)
-INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (30, N'Cessna_142', 521)
-INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (31, N'Cessna_102', 521)
-INSERT INTO [dbo].[Samolots] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (32, N'Cessna_221', 521)
-SET IDENTITY_INSERT [dbo].[Samolots] OFF
+SET IDENTITY_INSERT [dbo].[Planes] ON
+INSERT INTO [dbo].[Planes] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (29, N'Cessna_150', 6652)
+INSERT INTO [dbo].[Planes] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (30, N'Cessna_142', 521)
+INSERT INTO [dbo].[Planes] ([PlaneID], [Nazwa], [WylataneGodziny]) VALUES (32, N'Cessna_221', 521)
+SET IDENTITY_INSERT [dbo].[Planes] OFF
+
 ```
 #### Services
 
@@ -141,7 +141,7 @@ SET IDENTITY_INSERT [dbo].[Users] OFF
 ```
 ## VERY IMPORTANT!
 
-If the user database will not work (data), you have to manually add 3 users from the login level, after which one should give Role = "Admin" and then , thru admin panel we can add a mechanic role .
+If the user database will not work (data), you have to manually add 3 users from the login level, after which one should give Role = "Admin" and then thru admin panel we can add a mechanic role .
 
 After adding the data, we copy connectionstring, and replace it in the Web.config file, in the place:
 
