@@ -10,7 +10,7 @@ namespace AeroKlub.UI.Models
     public class PlaneListViewModel
     {
         public IEnumerable<Service> Serwis {get;set; }
-        public IEnumerable<Samolot> Samoloty { get; set; }
+        public IEnumerable<Plane> Samoloty { get; set; }
         public IEnumerable<Reservation> Reservations { get; set; }
         public string PlaneName { get; set; }
         public string Name { get; set; }

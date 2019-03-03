@@ -233,7 +233,7 @@ namespace AeroKlub.UI.Controllers
         [HttpPost]
         public ActionResult AddPlaneToReposiotry(string NazwaSamolotu, string Przebieg, string Name, string Nickname)
         {
-            Samolot samolot = new Samolot();
+            Plane samolot = new Plane();
             samolot.Nazwa = NazwaSamolotu.Replace(" " , "_");
             int outs;
             Int32.TryParse(Przebieg, out outs);

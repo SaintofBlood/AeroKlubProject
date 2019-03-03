@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AreoKlub.Domain.Entities
 {
-    public class Samolot
+    public class Plane
     {
         [Key]
         [Display(Name = "PlaneID")]

@@ -10,9 +10,9 @@ namespace AreoKlub.Domain.Abstract
     public interface IPlaneRepository
     {
 
-        IEnumerable<Samolot> Samoloty { get; }
+        IEnumerable<Plane> Samoloty { get; }
 
-        void AddPlane(Samolot samolot);
+        void AddPlane(Plane samolot);
 
         void DeletePlane(string Name);
 

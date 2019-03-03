@@ -45,20 +45,41 @@
 
 	}
 
-	<div class="container-fluid text-center">
+		<div class="container-fluid text-center">
 
-		@using (Html.BeginForm("AddAccountToRepository", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
-		{
-			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Login:  </p>@Html.TextBox("Name", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Imię:  </p>@Html.TextBox("FirstName", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Nazwisko:  </p>@Html.TextBox("Lastname", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Hasło:  </p>@Html.Password("paswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Powtórz hasło:  </p>@Html.Password("secondpaswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-			<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">E-Mail:  </p>@Html.TextBox("email", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
-
-			<input type="submit" value="Dodaj konto" class="btn btn-danger" style="margin-top:10px" />
-		}
-
-	</div>
+			<div class="card">
+				<div class="card-header">Registration</div>
+				<div class="card-body">
+				@using (Html.BeginForm("AddAccountToRepository", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+				{
+					<div class="form-group">
+						<label for="Name" class="col-md-4 col-form-label text-md-right" style="float:left">Login :</label>
+						<div style="padding-top:10px ; padding-bottom:10px;">@Html.TextBox("Name", null, new { @class = "form-control", @style = "width:200px;padding-left:10px;" })</div>
+					</div>
+					<div class="form-group row justify-content-center">
+						<label for="text" class="col-0 col-form-label">Imię:  </label>
+						<div style="padding-top:10px ; padding-bottom:10px;">@Html.TextBox("FirstName", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+					</div>
+					<div class="form-group row justify-content-center">
+						<label for="text" class="col-0 col-form-label">Nazwisko:  </label>
+						<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline"></p>@Html.TextBox("Lastname", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+					</div>
+					<div class="form-group row justify-content-center">
+						<label for="text" class="col-0 col-form-label">Login :</label>
+						<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Hasło:  </p>@Html.Password("paswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+					</div>
+					<div class="form-group row">
+						<label for="text" class="col-4 col-form-label">Login :</label>
+						<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">Powtórz hasło:  </p>@Html.Password("secondpaswd", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+					</div>
+					<div class="form-group row">
+						<label for="text" class="col-4 col-form-label">Login :</label>
+						<div style="padding-top:10px ; padding-bottom:10px;"><p class="inline">E-Mail:  </p>@Html.TextBox("email", null, new { @class = "form-control col-centered inline", @style = "width:200px;padding-left:10px;" })</div>
+					</div>
+					<input type="submit" value="Dodaj konto" class="btn btn-danger" style="margin-top:10px" />
+				}
+				</div>
+			</div>
+		</div>
 </body>
 </html>

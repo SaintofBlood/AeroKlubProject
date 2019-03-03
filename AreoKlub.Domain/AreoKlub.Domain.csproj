@@ -85,7 +85,7 @@
     <Compile Include="Entities\Service.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\Reservation.cs" />
-    <Compile Include="Entities\Samolot.cs" />
+    <Compile Include="Entities\Plane.cs" />
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

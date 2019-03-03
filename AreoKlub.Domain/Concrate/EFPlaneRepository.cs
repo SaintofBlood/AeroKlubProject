@@ -13,19 +13,19 @@ namespace AreoKlub.Domain.Concrate
 
         private EFDbContext context = new EFDbContext();
 
-        public IEnumerable<Samolot> Samoloty
+        public IEnumerable<Plane> Samoloty
         {
             get
             {
-                return context.Samoloty;            
+                return context.Planes;            
             }
         }
 
-        public void AddPlane(Samolot samolt)
+        public void AddPlane(Plane samolt)
         {
             if(samolt.PlaneID == 0)
             {
-                context.Samoloty.Add(samolt);
+                context.Planes.Add(samolt);
             }
           
             context.SaveChanges();
@@ -35,7 +35,7 @@ namespace AreoKlub.Domain.Concrate
         {
 
             
-            foreach(var samolot in context.Samoloty)
+            foreach(var samolot in context.Planes)
             {
                 if(samolot.Nazwa == Name)
                 {
@@ -43,10 +43,10 @@ namespace AreoKlub.Domain.Concrate
                 }
             }
 
-             Samolot dbEntry = context.Samoloty.Find(KeyId);
+             Plane dbEntry = context.Planes.Find(KeyId);
              if(dbEntry != null)
              {
-                 context.Samoloty.Remove(dbEntry);
+                 context.Planes.Remove(dbEntry);
                 
              }
             context.SaveChanges();
